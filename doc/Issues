@@ -1,0 +1,5 @@
+How to deal with null ships? What if there is no target? How to deal with this?
+	>>> Hav the system classes have two action functions. One that only has a origin and one that has both a target and a origin. A ship will
+	likely need a target. Basically this is the enemy that this ship is targeting and can attack and stuff.
+
+Add static keyword to the functions that need it.

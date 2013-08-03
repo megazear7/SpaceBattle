@@ -1,0 +1,95 @@
+>>> TODO list:
+User input mechanisms: GUI, command line (done)
+JUnit testing, commenting, set class variable to private that need to be
+spacial tracking with utility function to hide the math
+Computer AI
+Game rules
+
+
+>>> USER INPUT IDEA
+Turn Based to start with: 	Make a game loop that continually runs, and every pass through it issues a command to the ship, which in turn issues 
+							a command to that ships input mechanism, which in turn gets the command either from a user, or a AI or something, 
+							the that command is issued to the BattleController.
+
+Real Time:	A game loop runs and on ever y pass through it takes a list of commands from the ships and issues them. Input sources type commands
+			which are put on this stack in the ship which, on the next game loop pass through (which is very fast) the command is issued.
+			This basically is the action / listener type of thing. Needs to modeled after that basically. 
+
+
+<<<
+
+
+>>>
+Each system now has one function. Now the framework is done.
+Need to decide on how to track the position and facing of ships
+	Idea: The BattleController has "position" that is always at 0,0 and a "facing" that is always facing foward. And then use a 12 oclock
+	System for determining facing. In this way (6, 8, 3) would mean that ship is 6 spaces to the right of origin, 8 spaces ahead and facing
+	3 oclock. In this way every ship could be translated on a grid, and there would be no need to limit the grid bounds. Ships could get set with
+	starting positions that make sense, say (0, -10, 12) and (0, 10, 6) and then these ships could go from there. Utility functions that helped
+	with figuring out if say, "Is there a ship withen 6 spaces ahead of me?" or other useful to ask questins.
+Need to decide on the rules to the game. Damage, shields, engines, sensors, ect... How damage is calculated, how energy is used ect...
+	This may take some time to think and plan out, this is where the game is either fun or boring, use star strek lingo and scientific jargon
+	for coming up with system, action and argument names. Probably working on fleshing out the framework, making Junit tests, and implementing
+	the spacial tracking might come first so that I can figure out a good system of game rules that will be fun.
+
+<<<
+
+
+>>>Need to design the system of what exactly a command means, what it is, how they receive a meaning in the first place, what it effect and 
+how:
+
+There will be a class called BattleController that will determine which system the command needs to be routed to. This means give the action, 
+arguments, origin data and target data to the system class (named after the system name) This class will take in the parameters and manipulate 
+the ships that are passed into it. The key here is that the system classes are the classes that can manipulate ships. Additionally a EnviroEffect
+object is passed back to the CommandResponse and then back to the BattleController. In this way the BattleController can track information about 
+the changing enviroment due to the actions of the ships.
+|
+the EnviroEffect object is basically a data object and the BattleController object uses it to effect the "playing area". 
+
+Whenever a ship (i.e. a Ship object) issues a command it sends that command to its BattleController. The controller receives the command.
+The BattleController has a list of Ship objects as parameters. Whenever a command is issued the BattleController processes the command in 
+the way described above and applys all the changes to any ships that need changed. In this way a turn based system, real time system, count
+up system or really such system could be used.
+
+<<<
+>>>Need to make a gui that takes in user input, as well as displays some data such as health, energy and stuff. Maybe a command
+such as, "sensors scan foward" would tell you where the enemies are.
+>>>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<<<<< OLD >>>>>>
+>>>Need to design the system of what exactly a command means, what it is, how they receive a meaning in the first place, what it effect and 
+how:
+
+There will be a class called BattleController that will call another class called CommandResponse that takes in a command, a origin, and a 
+target. It will then figure out what system the command references and any need data from the origin and target (such as energy levels or defense 
+values) and give the action, arguments, origin data and target data and give that to another class named after the system name. This class will 
+take in the parameters and return a EnviroEffect object which then the CommandResponse class will give back to the BattleController. 
+The BattleController will then apply the EnviroEffect to the target and origin.
+
+the EnviroEffect object is basically a data object and the BattleController object uses it to effect the "playing area". Usually
+this means changing the stats of the ships (i.e. lowering health or shields, moving a ship in the battle field, ect...). But this EnviroEffect
+object could also effect things other than ships in the future.
+
+Whenever a ship (i.e. a Ship object) issues a command it sends that command to its BattleController. The controller receives the command.
+The BattleController has a list of Ship objects as parameters. Whenever a command is issued the BattleController processes the command in 
+the way described above and applys all the changes to any ships that need changed. In this way a turn based system, real time system, count
+up system or really such system could be used.
+
+<<<

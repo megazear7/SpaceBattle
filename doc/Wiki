@@ -1,0 +1,35 @@
+To "set up a game" you simply need to instantiate a BattleController with two ships, each with input source.
+
+BattleController: 	This class is an instance that controls, changes and manipulates the ships and the enviroment
+
+Ship: 				This is an instance class that have inputs from a user (human or computer) and issues commands to the BattleController, 
+					they are on response manipulated / altered by the BattleController.
+
+Command:			This is a instance class that is used to describe a action that a ship wants to do, they are formulated in one way
+					or another and then given from a ship, to a BattleController.
+
+CommandResponse:	This is a static class that is used by the BattleController to figure out how a command effect the ships and enviroment
+
+Engines:			This is a static class that is used by the CommandResponse to figure out what Engine related stuff a command does
+
+Weapons:			This is a static class that is used by the CommandResponse to figure out what Weapon related stuff a command does
+
+Shields:			This is a static class that is used by the CommandResponse to figure out what Shield related stuff a command does
+
+Utils:				This is a static class where some commonly needed function can live
+
+EnviroEffect:		This is a instance class that can be used by a BattleController to effect the ships and enviroment.
+
+Overview:
+A game class (such as TestScenario) is needed to play, it instantiates a BattleController and ships that each have inputs. From this
+game class the ships issue commands to the BattleController. The battle controller redirects to a system class which find the correct
+function to handle the command. The origin ship and other ships (that must be determined either via the command given (this is used in combination
+with the BattleController object that is passed along to the system class, or by the origin ship, like the origin ships target or something)
+are effected based off of the command given, and origin ships stats and the stats of any other ships that might have been effected. Additionally
+a EnviroEffect object is passed along back up to the BattleController. This object can include lots of things such as other effect to apply
+to the battle field (i.e. the BattleControllers own stats), other ship in the field, or even output messages to give to the ships Inputs. (this is
+a oxy moron, the Inputs are really two way streams so they should really be called something else).
+
+ship <<<>>> game class <<<>>> battle controller <<<>>> system classes
+commands, ships and battlecontrollers are sent right
+Enviro effect objects are sent back left
