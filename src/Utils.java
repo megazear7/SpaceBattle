@@ -2,6 +2,8 @@ import components.simplereader.SimpleReader;
 import components.simplereader.SimpleReader1L;
 import components.simplewriter.SimpleWriter;
 import components.simplewriter.SimpleWriter1L;
+import java.util.List;
+import java.util.ArrayList;
 
 public final class Utils {
 
@@ -46,7 +48,6 @@ public final class Utils {
     	String[] temp = {one, two, three};
     	return temp;
      }
-    
     public static int determineDamage(double shields, int instability, int damage, int type){
     	int result = 0;
     	if(type != 1){
@@ -59,6 +60,14 @@ public final class Utils {
     		result = result + instability;
     	}
     	return result;
+    }
+    
+    public static double findDistance(Ship one, Ship two){
+    	return 1;
+    }
+    
+    public static List<Ship> removeNotInArc(Ship ship, List<Ship> ships){
+    	return null;
     }
      
     public static void main(String[] args) {

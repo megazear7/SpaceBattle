@@ -6,6 +6,17 @@ Computer AI
 Game rules
 
 
+>>> Weapons? how does this work?
+The players issue a command such as "weapons fire xxx" where xxx is the name of a weapon. Ships have a list of weapons. A weapon is a class.
+If xxx is in the players list of weapons then the Weapons system class gets the stats of the weapon with that name that the origin ship has.
+A weapon class has damage, damageType, name, and more as the game rules change / advance.
+<<<
+
+>>> Movement and facing
+A ship can face in one of 16 directions. in this way your arcs are your current facing +/- 2.
+
+<<<
+
 >>> USER INPUT IDEA
 Turn Based to start with: 	Make a game loop that continually runs, and every pass through it issues a command to the ship, which in turn issues 
 							a command to that ships input mechanism, which in turn gets the command either from a user, or a AI or something, 
@@ -14,8 +25,6 @@ Turn Based to start with: 	Make a game loop that continually runs, and every pas
 Real Time:	A game loop runs and on ever y pass through it takes a list of commands from the ships and issues them. Input sources type commands
 			which are put on this stack in the ship which, on the next game loop pass through (which is very fast) the command is issued.
 			This basically is the action / listener type of thing. Needs to modeled after that basically. 
-
-
 <<<
 
 
@@ -74,22 +83,3 @@ such as, "sensors scan foward" would tell you where the enemies are.
 
 
 	<<<<< OLD >>>>>>
->>>Need to design the system of what exactly a command means, what it is, how they receive a meaning in the first place, what it effect and 
-how:
-
-There will be a class called BattleController that will call another class called CommandResponse that takes in a command, a origin, and a 
-target. It will then figure out what system the command references and any need data from the origin and target (such as energy levels or defense 
-values) and give the action, arguments, origin data and target data and give that to another class named after the system name. This class will 
-take in the parameters and return a EnviroEffect object which then the CommandResponse class will give back to the BattleController. 
-The BattleController will then apply the EnviroEffect to the target and origin.
-
-the EnviroEffect object is basically a data object and the BattleController object uses it to effect the "playing area". Usually
-this means changing the stats of the ships (i.e. lowering health or shields, moving a ship in the battle field, ect...). But this EnviroEffect
-object could also effect things other than ships in the future.
-
-Whenever a ship (i.e. a Ship object) issues a command it sends that command to its BattleController. The controller receives the command.
-The BattleController has a list of Ship objects as parameters. Whenever a command is issued the BattleController processes the command in 
-the way described above and applys all the changes to any ships that need changed. In this way a turn based system, real time system, count
-up system or really such system could be used.
-
-<<<

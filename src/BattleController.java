@@ -47,9 +47,14 @@ public final class BattleController {
     	if(command.system().equals("weapons")){
     		result = Weapons.action(this, command, origin);
     	}
-    	if(result.message() != null){
+    	if(command.system().equals("sensors")){
+    		result = Sensors.action(this, command, origin);
+    	}    	if(result.message() != null){
     		System.out.print(result.message());
     	}
+    	if(result.shipMessage() != null){
+    		origin.input().sendMessage(result.shipMessage());
+    	}
     }
     
     

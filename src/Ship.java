@@ -1,5 +1,7 @@
 import components.simplewriter.SimpleWriter;
 import components.simplewriter.SimpleWriter1L;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class Ship {
 
@@ -8,6 +10,7 @@ public final class Ship {
 	private int health;
 	private int shields;
 	private int weaponDamage;
+	private List<Weapon> weapons;
 	private int enginePower;
 	private int shieldPower;
 	private int frontShield;
@@ -21,7 +24,7 @@ public final class Ship {
 	private String shipName;
 	
     public Ship(BattleController battleController, int health, int shields, int weaponDamage, int enginePower, int shieldPower, 
-    		int frontShield, int otherShield, int power, int posY, int posX, int facing, Input input, String name) {
+    		int frontShield, int otherShield, int power, int posY, int posX, int facing, Input input, String name, List<Weapon> weapons) {
     	this.battleController = battleController;
     	this.health = health;
     	this.shields = shields;
@@ -33,9 +36,10 @@ public final class Ship {
     	this.power = power;
     	this.posX = posX;
     	this.posY = posY;
-    	this.facing = facing;
+    	this.facing = facing; // 1 - 16 (like an expanded clock)
     	this.input = input;
     	this.shipName = name;
+    	this.weapons = weapons;
     }
     public Ship(){
     }   
@@ -52,7 +56,20 @@ public final class Ship {
     }   
     
     
-    
+    public List<Weapon> weapons(){
+    	return this.weapons;
+    }
+    public void addWeapon(Weapon weapon){
+    	this.weapons.add(weapon);
+    }
+    public void removeWeapon(String weapon){
+    	int size = this.weapons.size();
+    	for(int i = 0; i < size; i++){
+    		if(this.weapons.get(i).name().equals(weapon)){
+    			this.weapons.remove(i);
+    		}
+    	}
+    }    
     
     public String shipName(){
     	return this.shipName;
@@ -168,6 +185,7 @@ public final class Ship {
     }
     
     public static void main(String[] args) {
+    	Weapon test = new Weapon(4, "none", "test");
 
     }
 

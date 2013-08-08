@@ -15,7 +15,7 @@ public final class Engines {
     	if(command.action().equals("engage")){
     		result = engage(result, origin, command.argument());
     	}
-     	if(command.action().equals("destruct")){
+     	if(command.action().equals("selfdestruct")){
     		result = destruct(result, origin, command.argument());
     	}   	
     	return result;

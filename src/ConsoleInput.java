@@ -25,6 +25,11 @@ public final class ConsoleInput implements Input {
     
     public static void main(String[] args) {
     }
+
+	@Override
+	public void sendMessage(String message) {
+		System.out.println(message);
+	}
   
 
 }

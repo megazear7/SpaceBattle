@@ -16,4 +16,9 @@ public final class ComputerAI implements Input {
 		return null;
 	}
 
+	@Override
+	public void sendMessage(String message) {
+		// do nothing, this is a computer, maybe later I could add AI that reacts to the results it gets back
+	}
+
 }

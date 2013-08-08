@@ -23,8 +23,24 @@ public final class TestScenario {
         
         BattleController control = new BattleController();
         List<Ship> temp = new ArrayList<Ship>();
-        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 0, -10, 12, new ConsoleInput(" (Enterprise)--> "), "The Enerprise"));
-        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 0, -10, 12, new ConsoleInput(" (Death Star)~~> "), "The Death Star"));
+
+        List<Weapon> enterpriseWeapons = new ArrayList<Weapon>();
+        Weapon lasers = new Weapon(4, "phase", "lasers");
+        Weapon missles = new Weapon(5, "phyiscal", "missles");
+        enterpriseWeapons.add(lasers);
+        enterpriseWeapons.add(missles);
+
+        List<Weapon> deathStarWeapons = new ArrayList<Weapon>();
+        Weapon beam = new Weapon(8, "phase", "deathbeam");
+        deathStarWeapons.add(lasers);
+        deathStarWeapons.add(beam);
+
+        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 0, -10, 12, 
+        		new ConsoleInput(" (Enterprise)--> "), "The Enerprise",
+        		enterpriseWeapons));
+        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 0, -10, 12, 
+        		new ConsoleInput(" (Death Star)~~> "), "The Death Star",
+        		deathStarWeapons));
         control.ships(temp);
         
         int cont = 1;
