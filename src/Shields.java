@@ -28,7 +28,7 @@ public final class Shields {
     		ship.addShieldPower(-1);
     	}
     	if(argument.contains("other")){
-    		ship.addOtherShield(ship.shieldPower());
+    		ship.addLeftShield(ship.shieldPower());
     		ship.addShieldPower(-1);
     	}
     	return result;

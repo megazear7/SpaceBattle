@@ -16,25 +16,66 @@ public final class Sensors {
     		result = check(result, origin, command.argument());
     	}
      	if(command.action().equals("target")){
-    		result = target(result, origin, command.argument());
-    	}  	
+    		result = target(result, origin, command.argument(), battleField);
+    	}  	   	if(command.action().equals("location")){
+  	   		// should not be used in real game used for testing
+    		result = location(result, origin, battleField);
+    	}
+    	
+    	if(command.action().equals("detect")){
+    		result = detect(result, origin, command.argument(), battleField);
+    	}
     	return result;
     }
     
-    private static EnviroEffect target(EnviroEffect result, Ship ship, String argument){
+    private static EnviroEffect location(EnviroEffect result, Ship ship, BattleController battleField){
+    	result.addMessage("The " + ship.shipName() + " location info is:\nposX: " + ship.posX() + "\nposY: " + ship.posY() + "\nfacing: " + ship.facing());
+
+    	// not meant to be used for the actualy game
+    	return result;
+    }
+    
+    
+    private static EnviroEffect detect(EnviroEffect result, Ship ship, String argument, BattleController battleField){
+    	
+    	if(argument.contains("forward")){
+    		
+    	} else if (argument.contains("left")){
+    		
+    	} else if (argument.contains("right")){
+    		
+    	} else if (argument.contains("rear")){
+    		
+    	}			
+    	return result;
+    }
+    
+    private static EnviroEffect target(EnviroEffect result, Ship ship, String argument, BattleController battleField){
+    	int weapon = 0;
+    	int length = ship.weapons().size();
+    	for (int i = 0; i < length; i++){
+    		if(argument.contains(ship.weapons().get(i).name())){
+    			weapon = i;
+    		}
+    	}	
     	
     	if(argument.contains("front")){
-    		
+    		Ship newTarget = Utils.keepBestTarget(ship, ship.weapons().get(weapon).range(), battleField.ships());
+    		ship.target(newTarget);
     	}
      	if(argument.contains("left")){
-    		
+     		Ship newTarget = Utils.keepBestTarget(ship, ship.leftFace(), ship.weapons().get(weapon).range(), battleField.ships());
+    		ship.target(newTarget);   		
     	}   	
     	if(argument.contains("right")){
-
+     		Ship newTarget = Utils.keepBestTarget(ship, ship.rightFace(), ship.weapons().get(weapon).range(), battleField.ships());
+    		ship.target(newTarget);   		
     	}	
-     	if(argument.contains("right")){
-
+     	if(argument.contains("back")){
+     		Ship newTarget = Utils.keepBestTarget(ship, ship.rearFace(), ship.weapons().get(weapon).range(), battleField.ships());
+    		ship.target(newTarget);   		
      	}	
+
     	return result;
     }
     
@@ -45,7 +86,9 @@ public final class Sensors {
     	}
     	if(argument.contains("shields")){
     		ship.input().sendMessage("Your front shields are at " + ship.frontShield());
-    		ship.input().sendMessage("Your other shields are at " + ship.otherShield());
+    		ship.input().sendMessage("Your left shields are at " + ship.leftShield());
+    		ship.input().sendMessage("Your right shields are at " + ship.rightShield());
+    		ship.input().sendMessage("Your rear shields are at " + ship.rearShield());
     	}
      	if(argument.contains("weapons")){
      		int size = ship.weapons().size();

@@ -25,21 +25,21 @@ public final class TestScenario {
         List<Ship> temp = new ArrayList<Ship>();
 
         List<Weapon> enterpriseWeapons = new ArrayList<Weapon>();
-        Weapon lasers = new Weapon(4, "phase", "lasers");
-        Weapon missles = new Weapon(5, "phyiscal", "missles");
+        Weapon lasers = new Weapon(4, "phase", "lasers", 15, 16);
+        Weapon rightMissles = new Weapon(5, "phyiscal", "right-missles", 15, 3);
+        Weapon leftMissles = new Weapon(5, "phyiscal", "left-missles", 15, 13);
         enterpriseWeapons.add(lasers);
-        enterpriseWeapons.add(missles);
+        enterpriseWeapons.add(leftMissles);
+        enterpriseWeapons.add(rightMissles);
 
         List<Weapon> deathStarWeapons = new ArrayList<Weapon>();
-        Weapon beam = new Weapon(8, "phase", "deathbeam");
+        Weapon beam = new Weapon(8, "phase", "deathbeam", 30, 16);
         deathStarWeapons.add(lasers);
         deathStarWeapons.add(beam);
 
-        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 0, -10, 12, 
-        		new ConsoleInput(" (Enterprise)--> "), "The Enerprise",
+        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 4, 0, 8, new ConsoleInput(" (Enterprise)--> "), "The Enerprise",
         		enterpriseWeapons));
-        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 0, -10, 12, 
-        		new ConsoleInput(" (Death Star)~~> "), "The Death Star",
+        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, -4, 0, 16, new ConsoleInput(" (Death Star)~~> "), "The Death Star",
         		deathStarWeapons));
         control.ships(temp);
         

@@ -28,6 +28,16 @@ public final class BattleController {
     	return this.ships;
     }
     
+    public List<Ship> otherShips(Ship ship){
+    	int length = this.ships().size();
+    	List<Ship> other = new ArrayList<Ship>();
+    	for(int i = 0; i < length; i++){
+    		if (this.ships().get(i) != ship){
+    			other.add(this.ships.get(i));
+    		}
+    	}
+    	return other;
+    }
 
     /**
      * This function takes in a command object and the ship that issues the command, procces's it using the systems classes (as of now that means Engines,

@@ -20,6 +20,16 @@ Utils:				This is a static class where some commonly needed function can live
 
 EnviroEffect:		This is a instance class that can be used by a BattleController to effect the ships and enviroment.
 
+Weapons:			Types: physical(0), phase(1), laser(2), plasma(3) 
+
+Engines				engage moves you forward / left / right or back.
+					boost turns you. argument describes how, it can be in the following formats:
+					[left,right][0-16]||[[[-]0-360]Deg]||[[[-]0-100%]
+					i.e.:
+					left60-Deg
+					right25-%
+					left4-
+
 Overview:
 A game class (such as TestScenario) is needed to play, it instantiates a BattleController and ships that each have inputs. From this
 game class the ships issue commands to the BattleController. The battle controller redirects to a system class which find the correct

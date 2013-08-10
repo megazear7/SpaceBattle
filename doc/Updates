@@ -10,6 +10,26 @@ Game rules
 The players issue a command such as "weapons fire xxx" where xxx is the name of a weapon. Ships have a list of weapons. A weapon is a class.
 If xxx is in the players list of weapons then the Weapons system class gets the stats of the weapon with that name that the origin ship has.
 A weapon class has damage, damageType, name, and more as the game rules change / advance.
+<<< Angle to rise / run
+
+Code	Angle	Rise	Run
+1		22.5	241		100
+2		45		1		1
+3		67.5	100		241	
+4		90		0		1
+5		112.5	-100	241
+6		135		-1		1
+7		157.5	-241	100
+8		180		-1		0
+9		202.5	-241	-100
+10		225		-1		-1
+11		247.5	-100	-241
+12		270		0		-1
+13		292.5	100		-241
+14		315		1		-1
+15		337.5	241		-100
+16		0		1		0
+
 <<<
 
 >>> Movement and facing

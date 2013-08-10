@@ -17,22 +17,27 @@ public final class Weapons {
     		target = origin.target();
     	}
     	if(command.action().equals("fire")){ 
-    		if(target != null){
-    			result = fire(result, origin, target, command.argument());
-    		} else {
-    			result.addMessage(origin.shipName() + " is not targeting a ship");
-    		}
+    		result = fire(result, origin, command.argument(), battleField);
     	}
+
     	return result;
     }
 
-    private static EnviroEffect fire(EnviroEffect result, Ship attacker, Ship defender, String argument){
-    	if(argument.contains("all")){
-    		int damage = attacker.weaponDamage();
-    		damage = damage - defender.frontShield();
-    		defender.addFrontShield(damage * -1);
-    	}
+    private static EnviroEffect fire(EnviroEffect result, Ship attacker, String argument, BattleController battleField){
+    
+    	Weapon weapon = attacker.weapon(argument);
+    	Ship target = Utils.keepBestTarget(attacker, weapon.facing(), weapon.range(), battleField.otherShips(attacker));
+   
+    	if(!target.realShip()){
+    		result.addMessage("No enemy in range of that weapon");
+    	} else {
+    		int damage = Utils.determineDamage(attacker, weapon, target);
+    		target.addHealth(damage * -1);
+    		target.instability(damage);
     	
+    		result.addMessage("The " + attacker.shipName() + " hit the " + target.shipName() + " in the " + Utils.whichFace(attacker, target) +
+    				" for " + damage + " damage.");
+    	} 
     	return result;
     }
 
