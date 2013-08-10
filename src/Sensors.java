@@ -1,3 +1,7 @@
+import java.util.List;
+
+import com.sun.corba.se.impl.javax.rmi.CORBA.Util;
+
 import components.simplewriter.SimpleWriter;
 import components.simplewriter.SimpleWriter1L;
 
@@ -39,13 +43,37 @@ public final class Sensors {
     private static EnviroEffect detect(EnviroEffect result, Ship ship, String argument, BattleController battleField){
     	
     	if(argument.contains("forward")){
-    		
+    		List<Ship> ships = Utils.removeNotInArc(ship, ship.facing(), battleField.otherShips(ship));
+    		int size = ships.size();
+   			ship.input().sendMessage("In your front arc: ");
+    		for(int i = 0; i < size; i++){
+    			int distance = Utils.findDistance(ship, ships.get(i));
+    			ship.input().sendMessage("The " + ships.get(i).shipName() + " is " + distance + " parsecc's away\n");
+    		}
     	} else if (argument.contains("left")){
-    		
+     		List<Ship> ships = Utils.removeNotInArc(ship, ship.rightFace() - 4, battleField.otherShips(ship));
+    		int size = ships.size();
+   			ship.input().sendMessage("In your left arc: ");
+    		for(int i = 0; i < size; i++){
+    			int distance = Utils.findDistance(ship, ships.get(i));
+    			ship.input().sendMessage("The " + ships.get(i).shipName() + " is " + distance + " parsecc's away\n");
+    		}   		
     	} else if (argument.contains("right")){
-    		
+    		List<Ship> ships = Utils.removeNotInArc(ship, ship.leftFace() + 4, battleField.otherShips(ship));
+    		int size = ships.size();
+   			ship.input().sendMessage("In your right arc: ");
+    		for(int i = 0; i < size; i++){
+    			int distance = Utils.findDistance(ship, ships.get(i));
+    			ship.input().sendMessage("The " + ships.get(i).shipName() + " is " + distance + " parsecc's away\n");
+    		}
     	} else if (argument.contains("rear")){
-    		
+    		List<Ship> ships = Utils.removeNotInArc(ship, ship.rearFace(), battleField.otherShips(ship));
+    		int size = ships.size();
+   			ship.input().sendMessage("In your rear arc: ");
+    		for(int i = 0; i < size; i++){
+    			int distance = Utils.findDistance(ship, ships.get(i));
+    			ship.input().sendMessage("The " + ships.get(i).shipName() + " is " + distance + " parsecc's away\n");
+    		}
     	}			
     	return result;
     }
