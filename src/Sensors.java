@@ -29,7 +29,7 @@ public final class Sensors {
     }
     
     private static EnviroEffect location(EnviroEffect result, Ship ship, BattleController battleField){
-    	ship.input().sendMessage(("The " + ship.shipName() + " location info is:\nposX: " + ship.posX() + "\nposY: " + ship.posY() + "\nfacing: " + ship.facing()));
+    	ship.input().sendMessage(("The " + ship.shipName() + " location info is:\nposX: " + ship.posX() + "\nposY: " + ship.posY() + "\nfacing: " + ship.facing() + "\n"));
 
     	// not meant to be used for the actual game
     	return result;
