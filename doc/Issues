@@ -16,3 +16,7 @@ Make a gui tool that can be used to create ships.
 Make a big text file that stores lots of ship data and a tool for doing something like, "new ship(toolToMake("name of a ship"))".
 in this way ships can be added to that file and based off of the ship name you can quickly and easily create ships. and even add new ships
 to that file by using the gui tool that creates ships.
+
+Lastly I need to make one gui which takes you to all of these things (like a main menu that brings all of this together)
+
+From there I can work on doing things such as makeing levels, a campaign and stuff
