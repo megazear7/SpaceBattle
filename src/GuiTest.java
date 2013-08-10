@@ -1,9 +1,11 @@
 
 
+import java.awt.Cursor;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -16,13 +18,16 @@ public final class GuiTest extends JFrame implements ActionListener {
     private static final int LINE_LENGTHS_IN_TEXT_AREAS = 20;
     private static final int ROWS_IN_THIS_GRID = 1;
     private static final int COLUMNS_IN_THIS_GRID = 0;
-    private static final int ROWS_IN_BUTTON_PANEL_GRID = 2;
+    private static final int ROWS_IN_BUTTON_PANEL_GRID = 3;
     private static final int COLUMNS_IN_BUTTON_PANEL_GRID = 1;
-    public BattleController controller;
 
     private final JTextArea inputText;
     private final JTextArea outputText;
     
+    private Input gameInput;
+    
+    private final JButton submitButton;
+
     public String commandText(){
     	return this.inputText.getText();
     }
@@ -49,17 +54,16 @@ public final class GuiTest extends JFrame implements ActionListener {
          * (The reference returned by the constructor may be ignored, as the
          * main program is done with its job once the constructor returns!)
          */
-        new GuiTest(new BattleController());
+        new GuiTest(new ConsoleInput());
     }
 
-    public GuiTest(BattleController controller) {
+    public GuiTest(Input gameInput) {
         /*
          * Call the JFrame (superclass) constructor with a String parameter to
          * name the window in its title bar
          */
         super("Simple GUI Demo");
-    	
-    	this.controller = controller;
+        this.gameInput = gameInput;
     	
         /*
          * Call the JFrame (superclass) constructor with a String parameter to
@@ -79,6 +83,7 @@ public final class GuiTest extends JFrame implements ActionListener {
         /*
          * Create widgets
          */
+        this.submitButton = new JButton("Submit Command");
         this.outputText = new JTextArea("", LINES_IN_TEXT_AREAS,
                 LINE_LENGTHS_IN_TEXT_AREAS);        this.inputText = new JTextArea("", LINES_IN_TEXT_AREAS,
                 LINE_LENGTHS_IN_TEXT_AREAS);
@@ -108,6 +113,7 @@ public final class GuiTest extends JFrame implements ActionListener {
          */
         buttonPanel.add(this.inputText);
         buttonPanel.add(this.outputText);
+        buttonPanel.add(this.submitButton);
        
         this.setLayout(new GridLayout(ROWS_IN_THIS_GRID, COLUMNS_IN_THIS_GRID));
 
@@ -123,6 +129,7 @@ public final class GuiTest extends JFrame implements ActionListener {
         this.add(outputTextScrollPane);
 
         // Set up the observers ----------------------------------------------
+        this.submitButton.addActionListener(this);
 
         /*
          * Register this object as the observer for all GUI events
@@ -142,9 +149,18 @@ public final class GuiTest extends JFrame implements ActionListener {
     }
     
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent event) {
 		// TODO Auto-generated method stub
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		
+        Object source = event.getSource();
+        
+        if(source == this.submitButton){
+        	this.gameInput.giveCommand(this.inputText.getText());
+        	this.input = "";
+        }
+        
+        this.setCursor(Cursor.getDefaultCursor());
 		
 	}
 

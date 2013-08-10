@@ -30,6 +30,12 @@ public final class ConsoleInput implements Input {
 	public void sendMessage(String message) {
 		System.out.println(message);
 	}
+
+	@Override
+	public void giveCommand(String command) {
+		// TODO Auto-generated method stub
+		
+	}
   
 
 }

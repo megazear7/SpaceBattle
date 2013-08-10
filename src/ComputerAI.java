@@ -21,4 +21,10 @@ public final class ComputerAI implements Input {
 		// do nothing, this is a computer, maybe later I could add AI that reacts to the results it gets back
 	}
 
+	@Override
+	public void giveCommand(String command) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

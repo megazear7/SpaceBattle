@@ -18,8 +18,6 @@ public final class GuiScene {
     }
 
     public static void main(String[] args) {
-        SimpleWriter out = new SimpleWriter1L();
-        SimpleReader in = new SimpleReader1L();
         
         BattleController control = new BattleController();
         List<Ship> temp = new ArrayList<Ship>();
@@ -36,40 +34,27 @@ public final class GuiScene {
         Weapon beam = new Weapon(8, "phase", "deathbeam", 30, 16);
         deathStarWeapons.add(lasers);
         deathStarWeapons.add(beam);
+        
+        GuiInput enterpriseInput = new GuiInput(control);
+        GuiInput deathstarInput = new GuiInput(control);
+        
+        Ship enterprise = new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 4, 0, 8, enterpriseInput , "The Enerprise",
+        		enterpriseWeapons);
+        Ship deathstar = new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, -4, 0, 16, deathstarInput, "The Death Star",
+        		deathStarWeapons);
+        
+        enterpriseInput.addGui(new GuiTest(enterpriseInput));
+        deathstarInput.addGui(new GuiTest(deathstarInput));
+        enterpriseInput.addShip(enterprise);
+        deathstarInput.addShip(deathstar);
 
-        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 4, 0, 8, new GuiInput(new GuiTest(control)) , "The Enerprise",
-        		enterpriseWeapons));
-        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, -4, 0, 16, new GuiInput(new GuiTest(control)), "The Death Star",
-        		deathStarWeapons));
+        temp.add(enterprise);
+        temp.add(deathstar);
+
         control.ships(temp);
         
-        int cont = 1;
-        int current = 1;
-        int turn = 0;
-        while(cont == 1){
-        	turn += 1;
-
-        	if(turn % 2 == 0){
-        		current = 0;
-        	}else{
-        		current = 1;
-        	}
-
-        	control.issueCommand(control.ships().get(current).input().askForCommand(), control.ships().get(current));
-
-        	if(control.ships().get(0).isDestroyed()){
-        		cont = 0;
-        		endOfGame(control.ships().get(1), control.ships().get(0));
-        	}
-        	if(control.ships().get(1).isDestroyed()){
-        		cont = 0;
-        		endOfGame(control.ships().get(0), control.ships().get(1));
-        	}        }
         
-
         
-        out.close();
-        in.close();
     }
 
     private static void endOfGame(Ship winner, Ship loser){

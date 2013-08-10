@@ -5,5 +5,7 @@ public interface Input {
 	
 	public void sendMessage(String message);
 	
+	public void giveCommand(String command);
+	
 
 }
