@@ -17,7 +17,7 @@ public final class GuiTest extends JFrame implements ActionListener {
     private static final int LINES_IN_TEXT_AREAS = 5;
     private static final int LINE_LENGTHS_IN_TEXT_AREAS = 20;
     private static final int ROWS_IN_THIS_GRID = 1;
-    private static final int COLUMNS_IN_THIS_GRID = 0;
+    private static final int COLUMNS_IN_THIS_GRID = 1;
     private static final int ROWS_IN_BUTTON_PANEL_GRID = 3;
     private static final int COLUMNS_IN_BUTTON_PANEL_GRID = 1;
 
@@ -33,12 +33,8 @@ public final class GuiTest extends JFrame implements ActionListener {
     }
 
     public void addHistory(String history){
-    	
     	String oldText = this.outputText.getText();
-    	
-    	this.outputText.setText(oldText + history);
-
-    	
+    	this.outputText.setText(history + oldText);
     }
 
     
@@ -54,7 +50,6 @@ public final class GuiTest extends JFrame implements ActionListener {
          * (The reference returned by the constructor may be ignored, as the
          * main program is done with its job once the constructor returns!)
          */
-        new GuiTest(new ConsoleInput());
     }
 
     public GuiTest(Input gameInput) {
@@ -103,7 +98,7 @@ public final class GuiTest extends JFrame implements ActionListener {
          * Create scroll panes for the text areas in case text is long enough to
          * require scrolling in one or both dimensions
          */
-        JScrollPane outputTextScrollPane = new JScrollPane(this.outputText);
+        JScrollPane inputTextScrollPane = new JScrollPane(this.inputText);
 
         JPanel buttonPanel = new JPanel(new GridLayout(
                 ROWS_IN_BUTTON_PANEL_GRID, COLUMNS_IN_BUTTON_PANEL_GRID));
@@ -126,7 +121,7 @@ public final class GuiTest extends JFrame implements ActionListener {
          * Add scroll panes and button panel to main window, from left to right
          * and top to bottom
          */
-        this.add(outputTextScrollPane);
+        this.add(inputTextScrollPane);
 
         // Set up the observers ----------------------------------------------
         this.submitButton.addActionListener(this);
@@ -157,7 +152,7 @@ public final class GuiTest extends JFrame implements ActionListener {
         
         if(source == this.submitButton){
         	this.gameInput.giveCommand(this.inputText.getText());
-        	this.input = "";
+        	this.inputText.setText("");
         }
         
         this.setCursor(Cursor.getDefaultCursor());

@@ -60,7 +60,10 @@ public final class BattleController {
     	if(command.system().equals("sensors")){
     		result = Sensors.action(this, command, origin);
     	}    	if(result.message() != null){
-    		System.out.print(result.message());
+    		int size = this.ships().size();
+    		for(int i = 0; i < size; i++){
+    			this.ships().get(i).input().sendMessage(result.message());
+    		}
     	}
     	if(result.shipMessage() != null){
     		origin.input().sendMessage(result.shipMessage());
