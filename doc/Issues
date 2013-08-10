@@ -1,5 +1,18 @@
-How to deal with null ships? What if there is no target? How to deal with this?
-	>>> Hav the system classes have two action functions. One that only has a origin and one that has both a target and a origin. A ship will
-	likely need a target. Basically this is the enemy that this ship is targeting and can attack and stuff.
-
 Add static keyword to the functions that need it.
+
+document the gui process. document the game mechanics. document other things.
+
+make junit tests for Util function. especially things like removeNotInArc.
+
+add the shields and defense game mechanics and such
+
+make a gui that is fun and intutive. Enter button to send commands, console style input, HUD of all sorts of information.
+
+make a thing which can read in a text file and create a ship out of it. Maybe using json for this would be good if there is 
+a good java json object library.
+
+Make a gui tool that can be used to create ships.
+
+Make a big text file that stores lots of ship data and a tool for doing something like, "new ship(toolToMake("name of a ship"))".
+in this way ships can be added to that file and based off of the ship name you can quickly and easily create ships. and even add new ships
+to that file by using the gui tool that creates ships.
