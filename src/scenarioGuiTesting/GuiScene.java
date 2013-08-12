@@ -7,6 +7,8 @@ import gameEngine.Weapon;
 import java.util.List;
 import java.util.ArrayList;
 
+import util.shipCreation;
+
 /**
  * This is a game implementing the Star Command system. This game has two ship that are identical except the have different names
  * and also are placed 20 spaces away from each other and are facing each other. When one ship is detected as being destroyed, the 
@@ -32,18 +34,11 @@ public final class GuiScene {
         enterpriseWeapons.add(leftMissles);
         enterpriseWeapons.add(rightMissles);
 
-        List<Weapon> deathStarWeapons = new ArrayList<Weapon>();
-        Weapon beam = new Weapon(8, "phase", "deathbeam", 30, 16);
-        deathStarWeapons.add(lasers);
-        deathStarWeapons.add(beam);
-        
         GuiInput enterpriseInput = new GuiInput(control);
         GuiInput deathstarInput = new GuiInput(control);
         
-        Ship enterprise = new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 4, 0, 8, enterpriseInput , "The Enerprise",
-        		enterpriseWeapons);
-        Ship deathstar = new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, -4, 0, 16, deathstarInput, "The Death Star",
-        		deathStarWeapons);
+        Ship enterprise = shipCreation.createShip("enterprise", control, enterpriseInput, 0, -4, 16);
+        Ship deathstar = shipCreation.createShip("deathstar", control, deathstarInput, 0, 4, 8);
         
         enterpriseInput.addGui(new GuiTest(enterpriseInput));
         deathstarInput.addGui(new GuiTest(deathstarInput));

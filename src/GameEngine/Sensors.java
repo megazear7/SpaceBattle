@@ -24,8 +24,8 @@ public final class Sensors {
     		result = location(result, origin, battleField);
     	}
     	
-    	if(command.action().equals("detect")){
-    		result = detect(result, origin, command.argument(), battleField);
+    	if(command.action().equals("scan")){
+    		result = scan(result, origin, command.argument(), battleField);
     	}
     	return result;
     }
@@ -38,9 +38,9 @@ public final class Sensors {
     }
     
     
-    private static EnviroEffect detect(EnviroEffect result, Ship ship, String argument, BattleController battleField){
+    private static EnviroEffect scan(EnviroEffect result, Ship ship, String argument, BattleController battleField){
     	
-    	if(argument.contains("forward")){
+    	if(argument.contains("front")){
     		List<Ship> ships = Utils.removeNotInArc(ship, ship.facing(), battleField.otherShips(ship));
     		int size = ships.size();
    			ship.input().sendMessage("In your front arc: ");
@@ -97,7 +97,7 @@ public final class Sensors {
      		Ship newTarget = Utils.keepBestTarget(ship, ship.rightFace(), ship.weapons().get(weapon).range(), battleField.ships());
     		ship.target(newTarget);   		
     	}	
-     	if(argument.contains("back")){
+     	if(argument.contains("rear")){
      		Ship newTarget = Utils.keepBestTarget(ship, ship.rearFace(), ship.weapons().get(weapon).range(), battleField.ships());
     		ship.target(newTarget);   		
      	}	

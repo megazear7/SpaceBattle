@@ -25,9 +25,14 @@ public final class Shields {
     	if(argument.contains("front")){
     		ship.addFrontShield(ship.shieldPower());
     		ship.addShieldPower(-1);
-    	}
-    	if(argument.contains("other")){
+    	} else if(argument.contains("left")){
     		ship.addLeftShield(ship.shieldPower());
+    		ship.addShieldPower(-1);
+    	} else if(argument.contains("right")){
+    		ship.addRightShield(ship.shieldPower());
+    		ship.addShieldPower(-1);
+    	} else if(argument.contains("rear")){
+    		ship.addRightShield(ship.shieldPower());
     		ship.addShieldPower(-1);
     	}
     	return result;

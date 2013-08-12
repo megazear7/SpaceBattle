@@ -8,8 +8,6 @@ import org.json.simple.JSONValue;
 
 import components.simplereader.SimpleReader;
 import components.simplereader.SimpleReader1L;
-import components.simplewriter.SimpleWriter;
-import components.simplewriter.SimpleWriter1L;
 
 import gameEngine.BattleController;
 import gameEngine.Ship;
@@ -22,7 +20,7 @@ public class shipCreation {
 	
 	private static List<Weapon> retrieveShipWeapons(String shipName){
 		// create input stream from a file
-    	SimpleReader in = new SimpleReader1L("lib/ships.txt");
+    	SimpleReader in = new SimpleReader1L("lib/weapons.txt");
     	
     	// create a String out of the file, reading in each line until end of stream is hit
     	String weaponsString = "";
@@ -40,22 +38,20 @@ public class shipCreation {
     	// check to make sure the object contains the key your looking for
     	if (fileJSON.containsKey("enterprise")){
     		// make a plain object using the entire json object's get method
-    		Object weaponsPlain = fileJSON.get("enterprise");
-    		// cast the plain object to a JSON object
-    		weaponsJSON = (JSONArray) weaponsPlain;
+    		weaponsJSON = (JSONArray) fileJSON.get("enterprise");
     	}
+    	
     	
    		List<Weapon> weapons = new ArrayList<Weapon>();
     	int length = weaponsJSON.size();
     	for(int i = 0; i < length; i++){
-    		Object weaponPlain = weaponsJSON.get(i);
-    		JSONObject weaponJSON = (JSONObject) weaponPlain;
+    		JSONObject weaponJSON = (JSONObject) weaponsJSON.get(i);
     		Weapon weapon = new Weapon(
-    					Integer.parseInt((String)weaponJSON.get("")),	// damage
-    					(String)weaponJSON.get(""),						// type
-    					(String)weaponJSON.get(""),						// name
-    					Integer.parseInt((String)weaponJSON.get("")),	// range
-    					Integer.parseInt((String)weaponJSON.get(""))	// facing
+    					Integer.parseInt((String) weaponJSON.get("damage")),	// damage
+    					(String) weaponJSON.get("type"),						// type
+    					(String) weaponJSON.get("name"),						// name
+    					Integer.parseInt((String) weaponJSON.get("range")),	// range
+    					Integer.parseInt((String) weaponJSON.get("facing"))	// facing
     				);
     		weapons.add(weapon);
     	}
@@ -84,18 +80,14 @@ public class shipCreation {
     	JSONObject shipJSON = new JSONObject();
     	
     	// check to make sure the object contains the key your looking for
-    	if (fileJSON.containsKey("enterprise")){
+    	if (fileJSON.containsKey(shipName)){
     		// make a plain object using the entire json object's get method
-    		Object shipPlain = fileJSON.get("enterprise");
+    		Object shipPlain = fileJSON.get(shipName);
     		// cast the plain object to a JSON object
     		shipJSON = (JSONObject) shipPlain;
     	}
     	
     	// now you have a ship represented by a json object that was retrieved from a file that is a list of ships
-    	System.out.println(shipJSON);
-    	
-    	int health = Integer.parseInt((String) shipJSON.get("health"));
-    	System.out.println(health);
 		
 		// make a ship out of its data
 		Ship ship = new Ship(
@@ -112,7 +104,7 @@ public class shipCreation {
     			posY,														// posY
     			facing,														// facing
     			input,														// input
-    			(String) shipJSON.get("shipName"),								// name
+    			(String) shipJSON.get("shipName"),							// name
     			weapons														// list of weapons
     	);
 		// return the ship
@@ -121,6 +113,7 @@ public class shipCreation {
 	
 	public static void main(String[] args) {
 		createShip("enterprise", null, null, 5, 5, 5);
+		System.out.print("");
     }
 
 }

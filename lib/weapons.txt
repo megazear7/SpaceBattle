@@ -1,36 +1,34 @@
 {
-	"enterprise" : {
-		"lasers" : {
-			"damage" 	: "5",
-			"type" 		: "1",
-			"range" 	: "20",
-			"facing" 	: "16",
+	"enterprise" : [
+		{
 			"name" 		: "lasers"
+			"damage" 	: "5",
+			"type" 		: "1",
+			"range" 	: "20",
+			"facing" 	: "16",
 		},
-	
-		"missles" : {
-			"damage" 	: "5",
-			"type" 		: "1",
-			"range" 	: "20",
-			"facing" 	: "16",
+		{
 			"name" 		: "missles"
+			"damage" 	: "5",
+			"type" 		: "1",
+			"range" 	: "20",
+			"facing" 	: "16",
 		}
-	},
+	],
 
-	"deathstar" : {
-		"deathbeam" : {
-			"damage" 	: "5",
-			"type" 		: "1",
-			"range" 	: "20",
-			"facing" 	: "16",
+	"deathstar" : [
+		{
 			"name" 		: "deathBeam"
-		},	
-		"phaseTorpedoes" : {
 			"damage" 	: "5",
 			"type" 		: "1",
 			"range" 	: "20",
 			"facing" 	: "16",
+		},
+		{
 			"name" 		: "phase-torpedoes"
+			"damage" 	: "5",
+			"type" 		: "1",
+			"range" 	: "20",
+			"facing" 	: "16",
 		}
-	}
-}
+	]}

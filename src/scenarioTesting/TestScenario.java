@@ -5,12 +5,12 @@ import components.simplewriter.SimpleWriter;
 import components.simplewriter.SimpleWriter1L;
 import gameEngine.BattleController;
 import gameEngine.Ship;
-import gameEngine.Weapon;
 
 import java.util.List;
 import java.util.ArrayList;
 
 import util.ConsoleInput;
+import util.shipCreation;
 
 /**
  * This is a game implementing the Star Command system. This game has two ship that are identical except the have different names
@@ -31,23 +31,8 @@ public final class TestScenario {
         BattleController control = new BattleController();
         List<Ship> temp = new ArrayList<Ship>();
 
-        List<Weapon> enterpriseWeapons = new ArrayList<Weapon>();
-        Weapon lasers = new Weapon(4, "phase", "lasers", 15, 16);
-        Weapon rightMissles = new Weapon(5, "phyiscal", "right-missles", 15, 3);
-        Weapon leftMissles = new Weapon(5, "phyiscal", "left-missles", 15, 13);
-        enterpriseWeapons.add(lasers);
-        enterpriseWeapons.add(leftMissles);
-        enterpriseWeapons.add(rightMissles);
-
-        List<Weapon> deathStarWeapons = new ArrayList<Weapon>();
-        Weapon beam = new Weapon(8, "phase", "deathbeam", 30, 16);
-        deathStarWeapons.add(lasers);
-        deathStarWeapons.add(beam);
-
-        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 0, 4, 8, new ConsoleInput(" (Enterprise)--> "), "The Enerprise",
-        		enterpriseWeapons));
-        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 0, -4, 16, new ConsoleInput(" (Death Star)~~> "), "The Death Star",
-        		deathStarWeapons));
+        temp.add(shipCreation.createShip("enterprise", control, new ConsoleInput(" -(enterprise)-> "), 0, 4, 8));
+        temp.add(shipCreation.createShip("deathstar", control, new ConsoleInput(" ~(deathstar)~> "), 0, -4, 16));
         control.ships(temp);
         
         int cont = 1;
