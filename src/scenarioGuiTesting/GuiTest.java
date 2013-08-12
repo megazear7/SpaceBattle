@@ -1,7 +1,6 @@
 package scenarioGuiTesting;
 
 
-import gameEngine.Input;
 
 import java.awt.Cursor;
 import java.awt.GridLayout;
@@ -13,6 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+
+import util.Input;
 
 
 public final class GuiTest extends JFrame implements ActionListener {

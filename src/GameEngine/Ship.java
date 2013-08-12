@@ -1,6 +1,8 @@
 package gameEngine;
 import java.util.List;
 
+import util.Input;
+
 public final class Ship {
 
 	private Ship target;

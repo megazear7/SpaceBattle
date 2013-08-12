@@ -1,6 +1,5 @@
 package util;
 import gameEngine.Command;
-import gameEngine.Input;
 
 public final class ComputerAI implements Input {
 

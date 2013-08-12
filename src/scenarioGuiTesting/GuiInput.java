@@ -1,7 +1,7 @@
 package scenarioGuiTesting;
+import util.Input;
 import gameEngine.BattleController;
 import gameEngine.Command;
-import gameEngine.Input;
 import gameEngine.Ship;
 
 public final class GuiInput implements Input {

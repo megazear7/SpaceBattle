@@ -1,24 +1,24 @@
 package util;
 
 public final class Line {
-	public int intB;
-	public double b;
-	public int gameAngle;
-	public double m;
-	public int x1;
-	public int y1;
-	public int x2;
-	public int y2;
-	public boolean isHorizontal;
+	private int intB;
+	private double b;
+	private int gameAngle;
+	private double m;
+	private int x1;
+	private int y1;
+	private int x2;
+	private int y2;
+	private boolean isHorizontal;
 
 	public Line(int x, int y, int gameAngle){
 		this.x1 = x;
 		this.y1 = y;
-		this.gameAngle = gameAngle;
+		this.gameAngle(gameAngle);
 		double m = gameAngle * 22.5;
 		this.m = m;
 		this.b = ( -1 * m * x + y);
-		this.intB = (int) ((int) -1 * m * x + y);
+		this.intB((int) ((int) -1 * m * x + y));
 		
 		if(gameAngle == 1){
 			this.x2 = x + 100;
@@ -114,6 +114,22 @@ public final class Line {
 			isAbove = false;
 		}
 		return isAbove;
+	}
+
+	public int gameAngle() {
+		return gameAngle;
+	}
+
+	public void gameAngle(int gameAngle) {
+		this.gameAngle = gameAngle;
+	}
+
+	public int intB() {
+		return intB;
+	}
+
+	public void intB(int intB) {
+		this.intB = intB;
 	}
 	
 	

@@ -1,6 +1,5 @@
 package util;
 import gameEngine.Command;
-import gameEngine.Input;
 import components.simplereader.SimpleReader;
 import components.simplereader.SimpleReader1L;
 

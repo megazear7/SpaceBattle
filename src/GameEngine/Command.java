@@ -4,9 +4,9 @@ import util.Utils;
 
 public final class Command {
 
-	String system;
-	String action;
-	String argument;
+	private String system;
+	private String action;
+	private String argument;
 	
     public Command(String system, String action, String argument) {
     	this.system = system;

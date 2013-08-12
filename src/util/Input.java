@@ -1,4 +1,6 @@
-package gameEngine;
+package util;
+
+import gameEngine.Command;
 
 
 public interface Input {
