@@ -1,0 +1,36 @@
+{
+	"enterprise" : {
+		"lasers" : {
+			"damage" 	: "5",
+			"type" 		: "1",
+			"range" 	: "20",
+			"facing" 	: "16",
+			"name" 		: "lasers"
+		},
+	
+		"missles" : {
+			"damage" 	: "5",
+			"type" 		: "1",
+			"range" 	: "20",
+			"facing" 	: "16",
+			"name" 		: "missles"
+		}
+	},
+
+	"deathstar" : {
+		"deathbeam" : {
+			"damage" 	: "5",
+			"type" 		: "1",
+			"range" 	: "20",
+			"facing" 	: "16",
+			"name" 		: "deathBeam"
+		},	
+		"phaseTorpedoes" : {
+			"damage" 	: "5",
+			"type" 		: "1",
+			"range" 	: "20",
+			"facing" 	: "16",
+			"name" 		: "phase-torpedoes"
+		}
+	}
+}

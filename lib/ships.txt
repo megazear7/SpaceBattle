@@ -1,0 +1,48 @@
+{
+	"enterprise" : {
+		"shipName"	 	: "Enterprise", 
+		"health" 		: "50"
+		"weaponPower"	: "10",
+		"enginePower"	: "20",
+		"shieldPower"	: "10",
+		"frontShield"	: "5",
+		"leftShield"	: "5",
+		"rightShield" 	: "5",
+		"rearShield" 	: "5",
+	}
+	
+	"deathstar" : {
+		"shipName"	 	: "Death Star", 
+		"health" 		: "50"
+		"weaponPower"	: "10",
+		"enginePower"	: "20",
+		"shieldPower"	: "10",
+		"frontShield"	: "5",
+		"leftShield"	: "5",
+		"rightShield" 	: "5",
+		"rearShield" 	: "5",
+	}
+		"firefly" : {
+		"shipName"	 	: "FireFly", 
+		"health" 		: "50"
+		"weaponPower"	: "10",
+		"enginePower"	: "20",
+		"shieldPower"	: "10",
+		"frontShield"	: "5",
+		"leftShield"	: "5",
+		"rightShield" 	: "5",
+		"rearShield" 	: "5",
+	}
+	"cruiser" : {
+		"shipName"	 	: "Cruiser", 
+		"health" 		: "50"
+		"weaponPower"	: "10",
+		"enginePower"	: "20",
+		"shieldPower"	: "10",
+		"frontShield"	: "5",
+		"leftShield"	: "5",
+		"rightShield" 	: "5",
+		"rearShield" 	: "5",
+	}
+
+}

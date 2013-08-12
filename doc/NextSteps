@@ -1,7 +1,5 @@
-document the gui process. document the game mechanics. document other things.
-
-make junit tests for Util function. especially things like removeNotInArc.
-
+make a thing which can read in a text file and create a ship out of it. Maybe using json for this would be good if there is 
+a good java json object library.
 add the shields and defense game mechanics and such
 
 commenting and documentation as well as well defined game rules.
@@ -9,9 +7,6 @@ commenting and documentation as well as well defined game rules.
 make a gui that is fun and intutive. Enter button to send commands, console style input, HUD of all sorts of information.
 
 make computer AI
-
-make a thing which can read in a text file and create a ship out of it. Maybe using json for this would be good if there is 
-a good java json object library.
 
 Make a gui tool that can be used to create ships.
 
