@@ -1,15 +1,30 @@
->>> TODO list:
-User input mechanisms: GUI, command line (done)
-JUnit testing, commenting, set class variable to private that need to be
-spacial tracking with utility function to hide the math
-Computer AI
-Game rules
+>>> Gui Test: A possible outline for how to implement a gui
+In the scenario you create a battle controller, as well as ships, weapons, and inputs. If one of the inputs is a gui user input then the ship has a input.
+The input has a gui. The gameEngine does something of the form: ship.input().sendMessage("message to send"). The internals of the ships input class interact with
+the gui to update the gui in order to present the message. Also  if a message is supposed to be sent to all ships then the battleController cycles through them and
+send them the message in the same way. Information can travel in the other direction as well. The gui can send a command to the gui inputs giveCommand method.
+The input in turn does somthing like this.battleCommand.issueCommand(comand, ship). In this way info can travel both ways.
 
+Gui -> 	input.giveCommand -> 	Input ->	controler.issueCommand 		-> 	Battle Controller 	-> 	System Classes
+Gui		some gui stuff			Input		ship.input().sendMessage	<-	Ship				<-	System Classes	
+			/\
+			||
+			||
+			||
+		This part is kind
+		of undefined. It can 
+		be different for different
+		gui's and such. A standardized
+		way of doing this may help
+		so that a single guiInput can
+		be the go between for any gui
+		I make
 
 >>> Weapons? how does this work?
 The players issue a command such as "weapons fire xxx" where xxx is the name of a weapon. Ships have a list of weapons. A weapon is a class.
 If xxx is in the players list of weapons then the Weapons system class gets the stats of the weapon with that name that the origin ship has.
 A weapon class has damage, damageType, name, and more as the game rules change / advance.
+
 <<< Angle to rise / run
 
 Code	Angle	Rise	Run
