@@ -1,5 +1,3 @@
-make a thing which can read in a text file and create a ship out of it. Maybe using json for this would be good if there is 
-a good java json object library.
 add the shields and defense game mechanics and such
 
 commenting and documentation as well as well defined game rules.

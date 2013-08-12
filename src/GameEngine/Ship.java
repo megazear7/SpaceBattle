@@ -10,43 +10,28 @@ public final class Ship {
 	private int health;
 	private int weaponPower;
 	private List<Weapon> weapons;
-	private int enginePower;
 	private int shieldPower;
-	private int frontShield;
-	private int rightShield;
-	private int leftShield;
-	private int rearShield;
 	private int power;
-	private int posX; // This is always relative to the BattleControllers originX
-	private int posY; // This is always relative to the BattleControllers originY
-	private int facing; // this is 1-12 (like a clock)
 	private Input input;
 	private  boolean isDestroyed;
 	private String shipName;
 	private boolean realShip;
 	private int instability;
+	private Engine engine;
+	private Shield shield;
 	
     public Ship(BattleController battleController, int health, int weaponPower, int enginePower, int shieldPower, 
     		int frontShield, int leftShield, int rightShield, int rearShield, int posX, int posY, int facing, Input input, String name, List<Weapon> weapons) {
     	this.battleController(battleController);
     	this.health = health;
-    	this.shieldPower = shieldPower;
-    	this.weaponPower = weaponPower;
-    	this.enginePower = enginePower;
-    	this.shieldPower = shieldPower;
-    	this.frontShield = frontShield;
-    	this.leftShield = leftShield;
-    	this.rightShield = rightShield;
-    	this.rearShield = rearShield;
     	this.power = 1;
-    	this.posX = posX;
-    	this.posY = posY;
-    	this.facing = facing; // 1 - 16 (like an expanded clock)
+    	this.weaponPower = weaponPower;
     	this.input = input;
     	this.shipName = name;
     	this.weapons = weapons;
     	this.realShip = true;
-    	this.instability = 0;
+    	this.instability = 0;    	this.shield(new Shield(shieldPower, frontShield, leftShield, rightShield, rearShield));
+    	this.engine(new Engine(enginePower, posX, posY, facing));
     }
 
     public Ship(){
@@ -96,29 +81,29 @@ public final class Ship {
     	this.shipName = name;
     }   
     public int facing(){
-    	return this.facing;
+    	return this.engine().facing();
     }
     public void facing(int facing){
-    	this.facing = power;
+    	this.engine().facing(facing);
     }
-    public void addfacing(int facing){
-    	this.facing = this.facing + facing;
+    public void addFacing(int facing){
+    	this.engine().addFacing(facing);
     }     
     public int leftFace(){
-    	int left = this.facing() - 4;
+    	int left = this.engine().facing() - 4;
     	if (left < 1){
     		left += 16;
     	}
     	return left;
     }
     public int rightFace(){
-    	int right = this.facing() + 4;
+    	int right = this.engine().facing() + 4;
     	if (right > 16){
     		right -= 16;
     	}
     	return right;
     }    public int rearFace(){
-    	int rear = this.facing() - 8;
+    	int rear = this.engine().facing() - 8;
     	if (rear < 1){
     		rear += 16;
     	}
@@ -145,40 +130,40 @@ public final class Ship {
     	this.input = input;
     }
     public int leftShield(){
-    	return this.leftShield;
+    	return this.shield().left();
     }
     public void leftShield(int shieldVal){
-    	this.leftShield = shieldVal;
+    	this.shield().left(shieldVal);
     }
     public void addLeftShield(int shieldVal){
-    	this.leftShield = this.leftShield + shieldVal;
+    	this.shield().addLeft(shieldVal);
     }   
     public int rightShield(){
-    	return this.rightShield;
+    	return this.shield().right();
     }
     public void rightShield(int shieldVal){
-    	this.rightShield = shieldVal;
+    	this.shield().right(shieldVal);
     }
     public void addRightShield(int shieldVal){
-    	this.rightShield = this.rightShield + shieldVal;
+    	this.shield().addRight(shieldVal);
     }   
     public int rearShield(){
-    	return this.rearShield;
+    	return this.shield().rear();
     }
     public void rearShield(int shieldVal){
-    	this.rearShield = shieldVal;
+    	this.shield().rear(shieldVal);
     }
     public void addRearShield(int shieldVal){
-    	this.rearShield = this.rearShield + shieldVal;
+    	this.shield().addRear(shieldVal);
     }   
     public int frontShield(){
-    	return this.frontShield;
+    	return this.shield().front();
     }
     public void frontShield(int shieldVal){
-    	this.frontShield = shieldVal;
+    	this.shield().front(shieldVal);
     }
     public void addFrontShield(int shieldVal){
-    	this.frontShield = this.frontShield + shieldVal;
+    	this.shield().addFront(shieldVal);
     }  
     public int health(){
     	return this.health;
@@ -187,15 +172,15 @@ public final class Ship {
     	return this.weaponPower;
     } 
     public int enginePower(){
-    	return this.enginePower;
+    	return this.engine().power();
     } 
     public int power(){
     	return this.power;
     }
     public int posX(){
-    	return this.posX;
+    	return this.engine().posX();
     }     public int posY(){
-    	return this.posY;
+    	return this.engine().posY();
     }     public void health(int health){
     	this.health = health;
     }
@@ -203,16 +188,16 @@ public final class Ship {
     	this.weaponPower = power;
     } 
     public void enginePower(int power){
-    	this.enginePower = power;
+    	this.engine().power(power);
     } 
     public void power(int power){
     	this.power = power;
     } 
     public void posX(int newX){
-    	this.posX = newX;
+    	this.engine().posX(newX);
     }
     public void posY(int newY){
-    	this.posY = newY;
+    	this.engine().posY(newY);
     }
     public void addHealth(int health){
     	this.health = this.health + health;
@@ -221,16 +206,16 @@ public final class Ship {
     	this.weaponPower = this.weaponPower + power;
     } 
     public void addEnginePower(int power){
-    	this.enginePower = this.enginePower + power;
+    	this.engine().addPower(power);
     } 
     public void addPower(int power){
     	this.power = this.power + power;
     } 
     public void addPosX(int newX){
-    	this.posX = this.posX + newX;
+    	this.engine().addPosX(newX);
     }
     public void addPosY(int newY){
-    	this.posY = this.posY + newY;
+    	this.engine().addPosY(newY);
     }
     public Weapon weapon(String name){
     	int length = this.weapons().size();
@@ -253,6 +238,22 @@ public final class Ship {
 
 	public void battleController(BattleController battleController) {
 		this.battleController = battleController;
+	}
+
+	public Engine engine() {
+		return engine;
+	}
+
+	public void engine(Engine engine) {
+		this.engine = engine;
+	}
+
+	public Shield shield() {
+		return shield;
+	}
+
+	public void shield(Shield shield) {
+		this.shield = shield;
 	}
 
 }

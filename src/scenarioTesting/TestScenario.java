@@ -9,6 +9,7 @@ import gameEngine.Ship;
 import java.util.List;
 import java.util.ArrayList;
 
+import util.ComputerAI;
 import util.ConsoleInput;
 import util.shipCreation;
 
@@ -32,7 +33,7 @@ public final class TestScenario {
         List<Ship> temp = new ArrayList<Ship>();
 
         temp.add(shipCreation.createShip("enterprise", control, new ConsoleInput(" -(enterprise)-> "), 0, 4, 8));
-        temp.add(shipCreation.createShip("deathstar", control, new ConsoleInput(" ~(deathstar)~> "), 0, -4, 16));
+        temp.add(shipCreation.createShip("deathstar", control, new ComputerAI(), 0, -4, 16));
         control.ships(temp);
         
         int cont = 1;

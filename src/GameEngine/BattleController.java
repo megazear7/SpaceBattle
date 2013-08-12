@@ -47,6 +47,11 @@ public final class BattleController {
      * @returns	a EnviroEffect Object
      */
     public void issueCommand(Command command, Ship origin){
+    	
+    	if(command == null){
+    		return;
+    	}
+    	
     	EnviroEffect result = new EnviroEffect();
     	if(command.system().equals("engines")){
     		result = Engines.action(this, command, origin);

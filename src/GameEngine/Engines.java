@@ -46,9 +46,9 @@ public final class Engines {
     		
     	}else{
     		if(left){
-    			ship.addfacing(number * -1);
+    			ship.addFacing(number * -1);
     		}else{
-    			ship.addfacing(number);
+    			ship.addFacing(number);
     		}
     	}
     	return result;
