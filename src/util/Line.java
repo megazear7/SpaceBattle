@@ -1,4 +1,4 @@
-package math.math;
+package util;
 
 public final class Line {
 	public int intB;
@@ -89,6 +89,7 @@ public final class Line {
 		return (int) ((int) this.m * x + this.b);
 	}
 	
+	@SuppressWarnings("unused")
 	private int xAtY(int y){
 		return (int) ((int) (y - this.b)/this.m);
 	}

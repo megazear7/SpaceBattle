@@ -1,5 +1,4 @@
-import components.simplewriter.SimpleWriter;
-import components.simplewriter.SimpleWriter1L;
+package gameEngine;
 
 public final class Weapon {
 
@@ -16,20 +15,23 @@ public final class Weapon {
     	this.name = name;
     	this.range = range;
     	this.facing = facing;
+    	
+    	if (type.equals("physical")){
+    		this.typeNum = 0;
+    	}else if (type.equals("phase")){
+    		this.typeNum = 1;
+    	}else if (type.equals("laser")){
+    		this.typeNum = 2;
+    	}else if (type.equals("plasma")){
+    		this.typeNum = 3;
+    	}else{
+    		this.typeNum = -1;
+    	}
+    	
     }
 
     public int typeNum(){
-    	int type = 0;
-    	if(this.type().equals("physical")){
-    		type = 0;
-    	} else if(this.type().equals("phase")){
-    		type = 1;
-    	} else if(this.type().equals("laser")){
-    		type = 2;
-    	} else if(this.type().equals("plasma")){
-    		type = 3;
-    	}
-    	return type;
+    	return this.typeNum;
     }
     public int facing(){
     	return this.facing;

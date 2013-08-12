@@ -1,9 +1,16 @@
+package scenarioTesting;
 import components.simplereader.SimpleReader;
 import components.simplereader.SimpleReader1L;
 import components.simplewriter.SimpleWriter;
 import components.simplewriter.SimpleWriter1L;
+import gameEngine.BattleController;
+import gameEngine.Ship;
+import gameEngine.Weapon;
+
 import java.util.List;
 import java.util.ArrayList;
+
+import util.ConsoleInput;
 
 /**
  * This is a game implementing the Star Command system. This game has two ship that are identical except the have different names

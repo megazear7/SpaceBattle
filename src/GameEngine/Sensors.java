@@ -1,9 +1,7 @@
+package gameEngine;
+
 import java.util.List;
-
-import com.sun.corba.se.impl.javax.rmi.CORBA.Util;
-
-import components.simplewriter.SimpleWriter;
-import components.simplewriter.SimpleWriter1L;
+import util.Utils;
 
 public final class Sensors {
 
@@ -33,9 +31,9 @@ public final class Sensors {
     }
     
     private static EnviroEffect location(EnviroEffect result, Ship ship, BattleController battleField){
-    	result.addMessage("The " + ship.shipName() + " location info is:\nposX: " + ship.posX() + "\nposY: " + ship.posY() + "\nfacing: " + ship.facing());
+    	ship.input().sendMessage(("The " + ship.shipName() + " location info is:\nposX: " + ship.posX() + "\nposY: " + ship.posY() + "\nfacing: " + ship.facing() + "\n"));
 
-    	// not meant to be used for the actualy game
+    	// not meant to be used for the actual game
     	return result;
     }
     

@@ -1,5 +1,6 @@
-import components.simplewriter.SimpleWriter;
-import components.simplewriter.SimpleWriter1L;
+package util;
+import gameEngine.Command;
+import gameEngine.Input;
 
 public final class ComputerAI implements Input {
 
@@ -19,6 +20,12 @@ public final class ComputerAI implements Input {
 	@Override
 	public void sendMessage(String message) {
 		// do nothing, this is a computer, maybe later I could add AI that reacts to the results it gets back
+	}
+
+	@Override
+	public void giveCommand(String command) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
