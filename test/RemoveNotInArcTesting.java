@@ -8,6 +8,7 @@ public class RemoveNotInArcTesting {
 	@Test
 	public void test() {
 
+		assertTrue(true);
 	}
 
 }
