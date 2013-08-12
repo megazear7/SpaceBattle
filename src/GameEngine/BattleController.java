@@ -1,5 +1,5 @@
-import components.simplewriter.SimpleWriter;
-import components.simplewriter.SimpleWriter1L;
+package gameEngine;
+
 import java.util.List;
 import java.util.ArrayList;
 

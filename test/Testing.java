@@ -1,6 +1,8 @@
 import static org.junit.Assert.*;
+import gameEngine.Command;
 
 import org.junit.Test;
+
 
 
 public class Testing {

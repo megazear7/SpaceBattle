@@ -1,6 +1,4 @@
-import components.simplewriter.SimpleWriter;
-import components.simplewriter.SimpleWriter1L;
-import java.util.ArrayList;
+package gameEngine;
 import java.util.List;
 
 public final class Ship {
@@ -28,7 +26,7 @@ public final class Ship {
 	
     public Ship(BattleController battleController, int health, int weaponPower, int enginePower, int shieldPower, 
     		int frontShield, int leftShield, int rightShield, int rearShield, int posY, int posX, int facing, Input input, String name, List<Weapon> weapons) {
-    	this.battleController = battleController;
+    	this.battleController(battleController);
     	this.health = health;
     	this.shieldPower = shieldPower;
     	this.weaponPower = weaponPower;
@@ -246,5 +244,13 @@ public final class Ship {
     
     public static void main(String[] args) {
     }
+
+	public BattleController battleController() {
+		return battleController;
+	}
+
+	public void battleController(BattleController battleController) {
+		this.battleController = battleController;
+	}
 
 }

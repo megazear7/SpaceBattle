@@ -1,7 +1,8 @@
-import components.simplereader.SimpleReader;
-import components.simplereader.SimpleReader1L;
-import components.simplewriter.SimpleWriter;
-import components.simplewriter.SimpleWriter1L;
+package scenarioGuiTesting;
+import gameEngine.BattleController;
+import gameEngine.Command;
+import gameEngine.Input;
+import gameEngine.Ship;
 
 public final class GuiInput implements Input {
 
@@ -11,7 +12,6 @@ public final class GuiInput implements Input {
 	
     public GuiInput(BattleController control) {
     	this.control = control;
-    	this.gui = gui;
     }
 	
 	@Override

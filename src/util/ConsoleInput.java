@@ -1,7 +1,8 @@
+package util;
+import gameEngine.Command;
+import gameEngine.Input;
 import components.simplereader.SimpleReader;
 import components.simplereader.SimpleReader1L;
-import components.simplewriter.SimpleWriter;
-import components.simplewriter.SimpleWriter1L;
 
 public final class ConsoleInput implements Input {
 

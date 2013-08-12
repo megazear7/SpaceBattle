@@ -1,4 +1,7 @@
+package scenarioGuiTesting;
 
+
+import gameEngine.Input;
 
 import java.awt.Cursor;
 import java.awt.GridLayout;
@@ -11,10 +14,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+
 public final class GuiTest extends JFrame implements ActionListener {
 
-    private String input, output;
-    private static final int LINES_IN_TEXT_AREAS = 5;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L; // no idea what this is, if it isn't here it gives a yellow warning thing
+	private static final int LINES_IN_TEXT_AREAS = 5;
     private static final int LINE_LENGTHS_IN_TEXT_AREAS = 20;
     private static final int ROWS_IN_THIS_GRID = 1;
     private static final int COLUMNS_IN_THIS_GRID = 1;
@@ -66,12 +73,6 @@ public final class GuiTest extends JFrame implements ActionListener {
          */
 
         // Set up the model variables ----------------------------------------
-
-        /*
-         * Initialize model variable values; both start as empty strings
-         */
-        this.input = "";
-        this.output = "";
 
         // Set up the GUI widgets --------------------------------------------
 

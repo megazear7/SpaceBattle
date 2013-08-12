@@ -1,9 +1,7 @@
+package gameEngine;
+
 import java.util.List;
-
-import com.sun.corba.se.impl.javax.rmi.CORBA.Util;
-
-import components.simplewriter.SimpleWriter;
-import components.simplewriter.SimpleWriter1L;
+import util.Utils;
 
 public final class Sensors {
 

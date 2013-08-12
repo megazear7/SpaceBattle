@@ -1,5 +1,6 @@
-import components.simplewriter.SimpleWriter;
-import components.simplewriter.SimpleWriter1L;
+package gameEngine;
+
+import util.Utils;
 
 public final class Command {
 

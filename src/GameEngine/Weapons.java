@@ -1,5 +1,5 @@
-import components.simplewriter.SimpleWriter;
-import components.simplewriter.SimpleWriter1L;
+package gameEngine;
+import util.Utils;
 
 public final class Weapons {
 
@@ -12,10 +12,7 @@ public final class Weapons {
      */
     public static EnviroEffect action(BattleController battleField, Command command, Ship origin){
     	EnviroEffect result = new EnviroEffect();
-    	Ship target = null;
-    	if (origin.target() != null){
-    		target = origin.target();
-    	}
+
     	if(command.action().equals("fire")){ 
     		result = fire(result, origin, command.argument(), battleField);
     	}
