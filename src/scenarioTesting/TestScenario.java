@@ -44,9 +44,9 @@ public final class TestScenario {
         deathStarWeapons.add(lasers);
         deathStarWeapons.add(beam);
 
-        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 4, 0, 8, new ConsoleInput(" (Enterprise)--> "), "The Enerprise",
+        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 0, 4, 8, new ConsoleInput(" (Enterprise)--> "), "The Enerprise",
         		enterpriseWeapons));
-        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, -4, 0, 16, new ConsoleInput(" (Death Star)~~> "), "The Death Star",
+        temp.add(new Ship(control, 10, 10, 10, 10, 10, 10, 10, 10, 0, -4, 16, new ConsoleInput(" (Death Star)~~> "), "The Death Star",
         		deathStarWeapons));
         control.ships(temp);
         

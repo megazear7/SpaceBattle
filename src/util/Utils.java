@@ -167,118 +167,9 @@ public final class Utils {
      * @return
      */
     public static List<Ship> removeNotInArc(Ship ship, List<Ship> ships){
-    	List<Ship> withen = new ArrayList<Ship>();   	
-    	
-    	// you have a point and two angles
-    	int x = ship.posX();
-    	int y = ship.posY();
-    	int a = ship.facing() - 2;
-    	int b = ship.facing() + 2;
-    	
-    	if(a == 0 ){
-    		a = 16;
-    	} else if (a == -1){
-    		a = 15;
-    	}
-    	if(b == 17){
-    		b = 1;
-    	}else if (b == 18){
-    		b = 2;
-    	}
-
-    	// determine the lines
-    	Line lineA = new Line(x, y, a);
-    	Line lineB = new Line(x, y, b);
-    	
-    	// loop through the list of ships, if its x and y values fall within the required range (describe below), then add it to the list of ships to return
-    	// if facing anything left (so 9-15) then you need to be to the left of both line.
-    	// if facing anything right (1-7) then you need to be to the right of both lines.
-    	// if facing up (16) then you need to be to the right of line a and to the left of line b.
-    	// if facing down (8) then you need to be left of line a and to the right of line b.
-    	
-    	int length = ships.size();
-    	int dir = 0;
-    	if (ship.facing() == 16){
-    		dir = 1;
-    	}else if (ship.facing() >= 1 && ship.facing() <= 7){
-    		dir = 2;
-    	}else if (ship.facing() == 8){
-    		dir = 3;
-    	}else if (ship.facing() >= 9 && ship.facing() <= 15){
-    		dir = 4;
-    	}
-    	for(int i = 0; i < length; i++){
-    		boolean isIn = false;
-    		boolean sideOfA = false;
-    		boolean sideOfB = false;
-    		int x2 = ships.get(i).posX();
-    		int y2 = ships.get(i).posY();
-
-    		if (dir == 1){
-    			if(lineA.isHorizontal() && lineA.pointIsAbove(x2, y2)){
-    				sideOfA = true;
-    			} else if(!lineA.isHorizontal() && !lineA.pointIsLeft(x2, y2)){
-    				sideOfA = true;
-    			}
-    			if(lineB.isHorizontal() && lineB.pointIsAbove(x2, y2)){
-    				sideOfB = true;
-    			} else if(!lineB.isHorizontal() && lineB.pointIsLeft(x2, y2)){
-    				sideOfB = true;
-    			}
-    			if (sideOfA && sideOfB){
-    				isIn = true;
-    			}
-    		} else if (dir == 2){
-    			if(lineA.isHorizontal() && !lineA.pointIsAbove(x2, y2)){
-    				sideOfA = true;
-    			} else if(!lineA.isHorizontal() && !lineA.pointIsLeft(x2, y2)){
-    				sideOfA = true;
-    			}
-    			if(lineB.isHorizontal() && lineB.pointIsAbove(x2, y2)){
-    				sideOfB = true;
-    			} else if(!lineB.isHorizontal() && !lineB.pointIsLeft(x2, y2)){
-    				sideOfB = true;
-    			}
-    			if (sideOfA && sideOfB){
-    				isIn = true;
-    			}
-    		} else if (dir == 3){
-    			if(lineA.isHorizontal() && !lineA.pointIsAbove(x2, y2)){
-    				sideOfA = true;
-    			} else if(!lineA.isHorizontal() && lineA.pointIsLeft(x2, y2)){
-    				sideOfA = true;
-    			}
-    			if(lineB.isHorizontal() && !lineB.pointIsAbove(x2, y2)){
-    				sideOfB = true;
-    			} else if(!lineB.isHorizontal() && lineB.pointIsLeft(x2, y2)){
-    				sideOfB = true;
-    			}
-    			if (sideOfA && sideOfB){
-    				isIn = true;
-    			}    		} else if (dir == 4){
-    			if(lineA.isHorizontal() && lineA.pointIsAbove(x2, y2)){
-    				sideOfA = true;
-    			} else if(!lineA.isHorizontal() && lineA.pointIsLeft(x2, y2)){
-    				sideOfA = true;
-    			}
-    			if(lineB.isHorizontal() && !lineB.pointIsAbove(x2, y2)){
-    				sideOfB = true;
-    			} else if(!lineB.isHorizontal() && lineB.pointIsLeft(x2, y2)){
-    				sideOfB = true;
-    			}
-    			if (sideOfA && sideOfB){
-    				isIn = true;
-    			}
-    		}
-    		if (isIn){
-    			withen.add(ships.get(i));
-    		}
-    		
-    	}
-    	
-    	return withen;
+    	return removeNotInArc(ship, ship.facing(), ships);
     }
-    
+ 
     /**
      * Removes from ships any ship that is not within the given radius of the given ship
      * @param ship
@@ -447,7 +338,7 @@ public final class Utils {
     		} else if (dir == 2){
     			if(lineA.isHorizontal() && !lineA.pointIsAbove(x2, y2)){
     				sideOfA = true;
-    			} else if(!lineA.isHorizontal() && !lineA.pointIsLeft(x2, y2)){
+    			} else if(!lineA.isHorizontal() && lineA.pointIsLeft(x2, y2)){
     				sideOfA = true;
     			}
     			if(lineB.isHorizontal() && lineB.pointIsAbove(x2, y2)){
@@ -461,7 +352,7 @@ public final class Utils {
     		} else if (dir == 3){
     			if(lineA.isHorizontal() && !lineA.pointIsAbove(x2, y2)){
     				sideOfA = true;
-    			} else if(!lineA.isHorizontal() && lineA.pointIsLeft(x2, y2)){
+    			} else if(!lineA.isHorizontal() && !lineA.pointIsLeft(x2, y2)){
     				sideOfA = true;
     			}
     			if(lineB.isHorizontal() && !lineB.pointIsAbove(x2, y2)){
@@ -474,7 +365,7 @@ public final class Utils {
     			}    		} else if (dir == 4){
     			if(lineA.isHorizontal() && lineA.pointIsAbove(x2, y2)){
     				sideOfA = true;
-    			} else if(!lineA.isHorizontal() && lineA.pointIsLeft(x2, y2)){
+    			} else if(!lineA.isHorizontal() && !lineA.pointIsLeft(x2, y2)){
     				sideOfA = true;
     			}
     			if(lineB.isHorizontal() && !lineB.pointIsAbove(x2, y2)){

@@ -27,7 +27,7 @@ public final class Ship {
 	private int instability;
 	
     public Ship(BattleController battleController, int health, int weaponPower, int enginePower, int shieldPower, 
-    		int frontShield, int leftShield, int rightShield, int rearShield, int posY, int posX, int facing, Input input, String name, List<Weapon> weapons) {
+    		int frontShield, int leftShield, int rightShield, int rearShield, int posX, int posY, int facing, Input input, String name, List<Weapon> weapons) {
     	this.battleController(battleController);
     	this.health = health;
     	this.shieldPower = shieldPower;

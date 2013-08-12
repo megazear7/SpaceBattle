@@ -113,5 +113,13 @@ public class MathTests {
 		assertTrue(line.pointIsLeft(-1, -1));
 		assertTrue(!line.pointIsLeft(-1, 1));
 	}
-
+
+	@Test
+	public void pointIsLeftTest4() {
+		Line line = new Line(0, 4, 6);
+		//assertTrue(line.pointIsLeft(0, 3));
+		//assertTrue(line.pointIsLeft(0, -4));
+		//assertTrue(line.pointIsLeft(2, 0));
+		assertTrue(line.pointIsLeft(5, 5));
+	}
 }
