@@ -55,15 +55,14 @@ public final class BattleController {
     	EnviroEffect result = new EnviroEffect();
     	if(command.system().equals("engines")){
     		result = Engines.action(this, command, origin);
-    	}
-    	if(command.system().equals("shields")){
+    	} else if(command.system().equals("shields")){
     		result = Shields.action(this, command, origin);
-    	}
-    	if(command.system().equals("weapons")){
+    	} else if(command.system().equals("weapons")){
     		result = Weapons.action(this, command, origin);
-    	}
-    	if(command.system().equals("sensors")){
+    	} else if(command.system().equals("sensors")){
     		result = Sensors.action(this, command, origin);
+    	} else {
+    		origin.input().sendMessage("Your command was not recognized!");
     	}    	if(result.message() != null){
     		int size = this.ships().size();
     		for(int i = 0; i < size; i++){

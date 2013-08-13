@@ -19,11 +19,11 @@ public final class Ship {
 	private Engine engine;
 	private Shield shield;
 	
-    public Ship(BattleController battleController, int health, int weaponPower, int enginePower, int shieldPower, 
+    public Ship(BattleController battleController, int power, int health, int weaponPower, int enginePower, int shieldPower, 
     		int frontShield, int leftShield, int rightShield, int rearShield, int posX, int posY, int facing, Input input, String name, List<Weapon> weapons) {
     	this.battleController(battleController);
     	this.health = health;
-    	this.power = 1;
+    	this.power = power;
     	this.weaponPower = weaponPower;
     	this.input = input;
     	this.shipName = name;
@@ -62,6 +62,9 @@ public final class Ship {
     public int instability(){
     	if (this.instability < 0){
     		this.instability = 0;
+    	}
+    	if (this.instability > this.health / 8){
+    		this.instability(this.health / 8);
     	}
     	return this.instability;
     }
@@ -130,6 +133,8 @@ public final class Ship {
     	return rear;
     }    public boolean isDestroyed(){
     	if(this.health() < 1){
+    		this.isDestroyed = true;
+    	} else if (this.power < 1){
     		this.isDestroyed = true;
     	}
     	return this.isDestroyed;

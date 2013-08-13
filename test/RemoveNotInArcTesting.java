@@ -13,14 +13,14 @@ public class RemoveNotInArcTesting {
 	@Test
 	public void test() {
 		// these ships are inside the ships arc
-		Ship one = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 0, -4, 16, null, "The Enerprise", null);
-		Ship two = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 0, 4, 8, null, "The Enerprise", null);
-		Ship three = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 8, null, "The Enerprise", null);
-		Ship four = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 2, 0, 8, null, "The Enerprise", null);
-		Ship five = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 2, 0, 5, null, "The Enerprise", null);
+		Ship one = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, -4, 16, null, "The Enerprise", null);
+		Ship two = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 4, 8, null, "The Enerprise", null);
+		Ship three = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 8, null, "The Enerprise", null);
+		Ship four = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 2, 0, 8, null, "The Enerprise", null);
+		Ship five = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 2, 0, 5, null, "The Enerprise", null);
 		
 		// the ships are outside of the ships arc
-		Ship six = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 5, -1, 8, null, "The Enerprise", null);
+		Ship six = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 5, -1, 8, null, "The Enerprise", null);
 
 		List<Ship> testList = new ArrayList<Ship>();
 		testList.add(two);
@@ -47,15 +47,15 @@ public class RemoveNotInArcTesting {
 	@Test
 	public void test2() {
 		// these ships are inside the ships arc
-		Ship one = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 0, 4, 8, null, "the ship", null);
-		Ship two = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 0, 3, 8, null, "The Enerprise", null);
-		Ship three = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 0, -4, 16, null, "The Enerprise", null);
-		Ship four = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 2, 0, 8, null, "The Enerprise", null);
-		Ship five = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 2, 0, 5, null, "The Enerprise", null);
+		Ship one = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 4, 8, null, "the ship", null);
+		Ship two = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 3, 8, null, "The Enerprise", null);
+		Ship three = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, -4, 16, null, "The Enerprise", null);
+		Ship four = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 2, 0, 8, null, "The Enerprise", null);
+		Ship five = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 2, 0, 5, null, "The Enerprise", null);
 		
 		// the ships are outside of the ships arc
-		Ship six = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 5, 3, 8, null, "The Enerprise", null);
-		Ship seven = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 0, 5, 8, null, "The Enerprise", null);
+		Ship six = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 5, 3, 8, null, "The Enerprise", null);
+		Ship seven = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 5, 8, null, "The Enerprise", null);
 
 		List<Ship> testList = new ArrayList<Ship>();
 		testList.add(two);
@@ -80,8 +80,8 @@ public class RemoveNotInArcTesting {
 	}
 		@Test
 	public void test3() {
-		Ship one = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 0, 4, 8, null, "The enterprise", null);
-		Ship two = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 0, -4, 16, null, "The deathstar", null);
+		Ship one = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 4, 8, null, "The enterprise", null);
+		Ship two = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, -4, 16, null, "The deathstar", null);
 
 		List<Ship> testList = new ArrayList<Ship>();
 		testList.add(two);
@@ -96,8 +96,8 @@ public class RemoveNotInArcTesting {
 	}
 	@Test
 	public void test4() {
-		Ship one = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, -6, 8, null, "The enterprise", null);
-		Ship two = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 0, -4, 16, null, "The deathstar", null);
+		Ship one = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, -6, 8, null, "The enterprise", null);
+		Ship two = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, -4, 16, null, "The deathstar", null);
 
 		List<Ship> testList = new ArrayList<Ship>();
 		testList.add(two);

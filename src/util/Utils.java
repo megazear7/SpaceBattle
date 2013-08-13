@@ -12,6 +12,15 @@ public final class Utils {
     private Utils() {
     }
     
+    public static int extractFromDash(String argument){
+    	int dash = argument.indexOf("-");
+    	argument = argument.substring(dash+1, argument.length());
+    	dash = argument.indexOf("-");
+    	argument = argument.substring(0, dash);
+    	int value = Integer.parseInt(argument);
+    	return value;
+    }
+    
      public static String[] elementsFromString(String str){
     	String one = "";
     	String two = "";
@@ -76,7 +85,6 @@ public final class Utils {
     		damage += defender.instability();
     	}
       	if (weapon.typeNum() == 2){
-    		damage += defender.instability();
     		damage += defender.instability();
     	}
    	

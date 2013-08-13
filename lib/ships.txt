@@ -1,7 +1,8 @@
 {
 	"enterprise" : {
 		"shipName"	 	: "Enterprise", 
-		"health" 		: "50"
+		"power"			: "20",
+		"health" 		: "50",
 		"weaponPower"	: "10",
 		"enginePower"	: "20",
 		"shieldPower"	: "10",
@@ -13,6 +14,7 @@
 	
 	"deathstar" : {
 		"shipName"	 	: "Death Star", 
+		"power"			: "20",
 		"health" 		: "50"
 		"weaponPower"	: "10",
 		"enginePower"	: "20",
@@ -24,6 +26,7 @@
 	}
 		"firefly" : {
 		"shipName"	 	: "FireFly", 
+		"power"			: "20",
 		"health" 		: "50"
 		"weaponPower"	: "10",
 		"enginePower"	: "20",
@@ -35,6 +38,7 @@
 	}
 	"cruiser" : {
 		"shipName"	 	: "Cruiser", 
+		"power"			: "20",
 		"health" 		: "50"
 		"weaponPower"	: "10",
 		"enginePower"	: "20",

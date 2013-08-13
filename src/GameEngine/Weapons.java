@@ -15,6 +15,8 @@ public final class Weapons {
 
     	if(command.action().equals("fire")){ 
     		result = fire(result, origin, command.argument(), battleField);
+    	} else {
+    		origin.input().sendMessage("Your action that was sent to the weapon platform room was not recognized");
     	}
 
     	return result;
@@ -23,6 +25,20 @@ public final class Weapons {
     private static EnviroEffect fire(EnviroEffect result, Ship attacker, String argument, BattleController battleField){
     
     	Weapon weapon = attacker.weapon(argument);
+    	
+    	if (weapon == null){
+    		attacker.input().sendMessage("We could not find a weapon by that name, your weapons are: ");
+     		int size = attacker.weapons().size();
+     		for (int i = 0; i < size; i++){
+     			attacker.input().sendMessage("Your " + attacker.weapons().get(i).name() + 
+     					"'s have damage: " + attacker.weapons().get(i).damage() + 
+     					", have a range of " + attacker.weapons().get(i).range() + 
+     					", are pointing in a position of " + attacker.weapons().get(i).facing() + 
+     					" and are " + attacker.weapons().get(i).type() + " weapons");
+     		}
+    		return result;
+    	}
+    	
     	Ship target = Utils.keepBestTarget(attacker, weapon.realFacing(), weapon.range(), battleField.otherShips(attacker));
    
     	if(!target.realShip()){
@@ -33,20 +49,19 @@ public final class Weapons {
     		target.addHealth(damage * -1);
 
     		if (weapon.typeNum() == 0){
-    			target.instability(damage);
+    			target.addInstability(damage);
     		} else {
     			String face = Utils.whichFace(attacker, target);
     			if(face.equals("front")){
-    				target.instability(damage - target.leftShield());
+    				target.addInstability(damage - target.leftShield());
     			} else if (face.equals("left")){
-    				target.instability(damage - target.leftShield());
+    				target.addInstability(damage - target.leftShield());
     			} else if (face.equals("right")){
-    				target.instability(damage - target.rightShield());
+    				target.addInstability(damage - target.rightShield());
     			} else if (face.equals("rear")){
-    				target.instability(damage - target.rearShield());
+    				target.addInstability(damage - target.rearShield());
     			}	
     		}
-    		//target.addShieldPower((-1 * ((int) damage / 5)));
     	
     		result.addMessage("The " + attacker.shipName() + " hit the " + target.shipName() + " in the " + Utils.whichFace(attacker, target) +
     				" for " + damage + " damage.");

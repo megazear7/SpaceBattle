@@ -92,6 +92,7 @@ public class shipCreation {
 		// make a ship out of its data
 		Ship ship = new Ship(
     			controller,													// BattleController
+    			Integer.parseInt((String) shipJSON.get("power")),			// Health
     			Integer.parseInt((String) shipJSON.get("health")),			// Health
     			Integer.parseInt((String) shipJSON.get("weaponPower")),		// weaponPower
     			Integer.parseInt((String) shipJSON.get("enginePower")),		// enginePower

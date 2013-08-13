@@ -50,7 +50,7 @@ public final class Weapon {
     	}
     	return realFacing;
     }
-    private int facing(){
+    public int facing(){
     	return this.facing;
     }
     public void facing(int facing){
