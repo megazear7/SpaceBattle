@@ -11,6 +11,15 @@ public final class Line {
 	private int y2;
 	private boolean isHorizontal;
 
+	
+    public static void main(String[] args) {
+    	Line line1 = new Line(0, -4, 2);
+    	Line line2 = new Line(0, -4, 14);
+    	Line line3 = new Line(0, 4, 6);
+    	Line line4 = new Line(0, 4, 10);
+    	System.out.println("");
+    }
+	
 	public Line(int x, int y, int gameAngle){
 		this.x1(x);
 		this.y1(y);

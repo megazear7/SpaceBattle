@@ -49,7 +49,7 @@ public final class Sensors {
     			ship.input().sendMessage("The " + ships.get(i).shipName() + " is " + distance + " parsecc's away\n");
     		}
     	} else if (argument.contains("left")){
-     		List<Ship> ships = Utils.removeNotInArc(ship, ship.rightFace() - 4, battleField.otherShips(ship));
+     		List<Ship> ships = Utils.removeNotInArc(ship, ship.leftFace(), battleField.otherShips(ship));
     		int size = ships.size();
    			ship.input().sendMessage("In your left arc: ");
     		for(int i = 0; i < size; i++){
@@ -57,7 +57,7 @@ public final class Sensors {
     			ship.input().sendMessage("The " + ships.get(i).shipName() + " is " + distance + " parsecc's away\n");
     		}   		
     	} else if (argument.contains("right")){
-    		List<Ship> ships = Utils.removeNotInArc(ship, ship.leftFace() + 4, battleField.otherShips(ship));
+    		List<Ship> ships = Utils.removeNotInArc(ship, ship.rightFace(), battleField.otherShips(ship));
     		int size = ships.size();
    			ship.input().sendMessage("In your right arc: ");
     		for(int i = 0; i < size; i++){

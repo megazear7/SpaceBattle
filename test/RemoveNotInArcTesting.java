@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 import util.Utils;
+import util.shipCreation;
 import gameEngine.Ship;
 
 public class RemoveNotInArcTesting {
@@ -92,8 +93,35 @@ public class RemoveNotInArcTesting {
 		
 		assertEquals(1, newList.size());
 		assertEquals(testList, newList);
-		
-		assertTrue(true);
 	}
-	
+	@Test
+	public void test4() {
+		Ship one = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 10, -6, 8, null, "The enterprise", null);
+		Ship two = new Ship(null, 10, 10, 10, 10, 10, 10, 10, 10, 0, -4, 16, null, "The deathstar", null);
+
+		List<Ship> testList = new ArrayList<Ship>();
+		testList.add(two);
+
+		List<Ship> list = new ArrayList<Ship>();
+		list.add(two);
+
+		List<Ship> newList = Utils.removeNotInArc(one, one.rightFace(), list);
+		
+		assertEquals(1, newList.size());
+		assertEquals(testList, newList);
+	}	@Test
+	public void test5() {
+        Ship one = shipCreation.createShip("enterprise", null, null, -10, -6, 12);
+        Ship two = shipCreation.createShip("deathstar", null, null, 0, -4, 16);
+		List<Ship> testList = new ArrayList<Ship>();
+		testList.add(two);
+
+		List<Ship> list = new ArrayList<Ship>();
+		list.add(two);
+
+		List<Ship> newList = Utils.removeNotInArc(one, one.rearFace(), list);
+		
+		assertEquals(testList, newList);
+		assertEquals(1, newList.size());
+	}
 }

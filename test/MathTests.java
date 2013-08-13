@@ -121,5 +121,55 @@ public class MathTests {
 		//assertTrue(line.pointIsLeft(0, -4));
 		//assertTrue(line.pointIsLeft(2, 0));
 		assertTrue(line.pointIsLeft(5, 5));
-	}
+	}	@Test
+	public void giveMovementTest1() {
+		int[] coord = Utils.giveMovement(0, 20, 16);
+		assertEquals(0, coord[0]);
+		assertEquals(20, coord[1]);
+	}	@Test
+	public void giveMovementTest2() {
+		int[] coord = Utils.giveMovement(0, 20, 4);
+		assertEquals(20, coord[0]);
+		assertEquals(0, coord[1]);
+	}	@Test
+	public void giveMovementTest3() {
+		int[] coord = Utils.giveMovement(0, 20, 8);
+		assertEquals(0, coord[0]);
+		assertEquals(-20, coord[1]);
+	}	@Test
+	public void giveMovementTest4() {
+		int[] coord = Utils.giveMovement(0, 20, 12);
+		assertEquals(-20, coord[0]);
+		assertEquals(0, coord[1]);
+	}	@Test
+	public void giveMovementTest5() {
+		int[] coord = Utils.giveMovement(5, 5, 16);
+		assertEquals(-5, coord[0]);
+		assertEquals(5, coord[1]);
+	}	@Test
+	public void giveMovementTest6() {
+		int[] coord = Utils.giveMovement(0, 10, 2);
+		assertEquals(7, coord[0]);
+		assertEquals(7, coord[1]);
+	}	@Test
+	public void giveMovementTest7() {
+		int[] coord = Utils.giveMovement(0, 10, 14);
+		assertEquals(-7, coord[0]);
+		assertEquals(7, coord[1]);
+	}	@Test
+	public void giveMovementTest8() {
+		int[] coord = Utils.giveMovement(0, 10, 6);
+		assertEquals(7, coord[0]);
+		assertEquals(-7, coord[1]);
+	}	@Test
+	public void giveMovementTest9() {
+		int[] coord = Utils.giveMovement(0, 10, 10);
+		assertEquals(-7, coord[0]);
+		assertEquals(-7, coord[1]);
+	}	@Test
+	public void giveMovementTest10() {
+		int[] coord = Utils.giveMovement(0, 10, 1);
+		assertEquals(3, coord[0]);
+		assertEquals(9, coord[1]);
+	}
 }

@@ -3,14 +3,14 @@
 		{
 			"name" 		: "lasers"
 			"damage" 	: "5",
-			"type" 		: "1",
+			"type" 		: "laser",
 			"range" 	: "20",
 			"facing" 	: "16",
 		},
 		{
 			"name" 		: "missles"
-			"damage" 	: "5",
-			"type" 		: "1",
+			"damage" 	: "3",
+			"type" 		: "physical",
 			"range" 	: "20",
 			"facing" 	: "16",
 		}
@@ -20,14 +20,14 @@
 		{
 			"name" 		: "deathBeam"
 			"damage" 	: "5",
-			"type" 		: "1",
+			"type" 		: "phase",
 			"range" 	: "20",
 			"facing" 	: "16",
 		},
 		{
 			"name" 		: "phase-torpedoes"
 			"damage" 	: "5",
-			"type" 		: "1",
+			"type" 		: "phase",
 			"range" 	: "20",
 			"facing" 	: "16",
 		}

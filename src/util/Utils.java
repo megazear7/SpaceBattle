@@ -49,35 +49,20 @@ public final class Utils {
     	}
     	String[] temp = {one, two, three};
     	return temp;
-     }
-    public static int determineDamage(double shields, int instability, int damage, int type){
-    	
-    	int result = 0;
-    	if(type != 1){
-    		result = (int) (damage * shields);
-    	}
-    	if(type != 3){
-    		result = result + instability;
-    	}
-    	if(type == 2){
-    		result = result + instability;
-    	}
-    	return result;
-    }
-    
+     }    
     public static int determineDamage(Ship attacker, Weapon weapon, Ship defender){
     	int damage = weapon.damage() * attacker.weaponPower();
     	
     	String face = whichFace(attacker, defender);
-    	int shields = 0;
+    	double shields = 0;
     	if(face.equals("front")){
-    		shields = defender.frontShield();    		
+    		shields = defender.frontShieldDecimal();    		
     	} else if (face.equals("left")){
-    		shields = defender.leftShield();
+    		shields = defender.leftShieldDecimal();
     	} else if (face.equals("right")){
-    		shields = defender.rightShield();
+    		shields = defender.rightShieldDecimal();
     	} else if (face.equals("rear")){
-    		shields = defender.rearShield();
+    		shields = defender.rearShieldDecimal();
     	}
     	
     	if (shields > 1 ){
@@ -305,13 +290,13 @@ public final class Utils {
     	
     	int length = ships.size();
     	int dir = 0;
-    	if (ship.facing() == 16){
+    	if (facing == 16){
     		dir = 1;
-    	}else if (ship.facing() >= 1 && ship.facing() <= 7){
+    	}else if (facing >= 1 && facing <= 7){
     		dir = 2;
-    	}else if (ship.facing() == 8){
+    	}else if (facing == 8){
     		dir = 3;
-    	}else if (ship.facing() >= 9 && ship.facing() <= 15){
+    	}else if (facing >= 9 && facing <= 15){
     		dir = 4;
     	}
     	for(int i = 0; i < length; i++){
@@ -338,12 +323,12 @@ public final class Utils {
     		} else if (dir == 2){
     			if(lineA.isHorizontal() && !lineA.pointIsAbove(x2, y2)){
     				sideOfA = true;
-    			} else if(!lineA.isHorizontal() && lineA.pointIsLeft(x2, y2)){
+    			} else if(!lineA.isHorizontal() && !lineA.pointIsLeft(x2, y2)){
     				sideOfA = true;
     			}
     			if(lineB.isHorizontal() && lineB.pointIsAbove(x2, y2)){
     				sideOfB = true;
-    			} else if(!lineB.isHorizontal() && !lineB.pointIsLeft(x2, y2)){
+    			} else if(!lineB.isHorizontal() && lineB.pointIsLeft(x2, y2)){
     				sideOfB = true;
     			}
     			if (sideOfA && sideOfB){
@@ -455,7 +440,7 @@ public final class Utils {
 
     	double changeSlope = facing * 22.5 - 270;
 
-    	double x = Math.cos(Math.toRadians(changeSlope))*deltaForward + ((-1 * Math.sin(Math.toRadians(changeSlope)))*deltaSide);
+    	double x = -1*Math.cos(Math.toRadians(changeSlope))*deltaForward + ((-1 * Math.sin(Math.toRadians(changeSlope)))*deltaSide);
     	double y = Math.sin(Math.toRadians(changeSlope))*deltaForward + (Math.cos(Math.toRadians(changeSlope))*deltaSide);
     	
     	int intX = (int) x;

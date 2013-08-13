@@ -56,6 +56,12 @@ public class Engine {
 	}
 	
 	public void addFacing(int facing) {
-		this.facing += facing;
+		int face = this.facing + facing;
+		if(face > 16){
+			face -= 16;
+		} else if (face < 0) {
+			face += 16;
+		}
+		this.facing = face;
 	}
 }

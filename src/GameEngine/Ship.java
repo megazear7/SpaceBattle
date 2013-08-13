@@ -10,7 +10,6 @@ public final class Ship {
 	private int health;
 	private int weaponPower;
 	private List<Weapon> weapons;
-	private int shieldPower;
 	private int power;
 	private Input input;
 	private  boolean isDestroyed;
@@ -31,31 +30,52 @@ public final class Ship {
     	this.weapons = weapons;
     	this.realShip = true;
     	this.instability = 0;    	this.shield(new Shield(shieldPower, frontShield, leftShield, rightShield, rearShield));
-    	this.engine(new Engine(enginePower, posX, posY, facing));
+    	this.engine(new Engine(posX, posY, enginePower, facing));
     }
 
     public Ship(){
     	this.realShip = false;
     }   
 
+    public double frontShieldDecimal() {
+    	return ((((double) this.shield().front() / 100) - 1) * -1);
+    }
+    public double leftShieldDecimal() {
+    	return ((((double) this.shield().left() / 100) - 1) * -1);
+    }
+    public double rightShieldDecimal() {
+    	return ((((double) this.shield().right() / 100) - 1) * -1);
+    }
+    public double rearShieldDecimal() {
+    	return ((((double) this.shield().rear() / 100) - 1) * -1);
+    }
     public int shieldPower(){
-    	return this.shieldPower;
+    	return this.shield().power();
     }
     public void shieldPower(int power){
-    	this.shieldPower = power;
+    	this.shield().power(power);
     }
     public void addShieldPower(int power){
-    	this.shieldPower = this.shieldPower + power;
+    	this.shield().addPower(power);
     }   
     
     public int instability(){
+    	if (this.instability < 0){
+    		this.instability = 0;
+    	}
     	return this.instability;
     }
     public void instability(int a){
+    	if (a < 0){
+    		a = 0;
+    	}
     	this.instability = a;
     }
     public void addInstability(int a){
     	this.instability = this.instability + a;
+    	if (this.instability < 0){
+    		this.instability = 0;
+    	}
     }     
     public List<Weapon> weapons(){
     	return this.weapons;

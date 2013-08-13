@@ -2,12 +2,14 @@ package gameEngine;
 
 public final class Weapon {
 
+	private String name;
+	private Ship ship;
 	private int damage;
 	private int typeNum;
 	private String type;
-	private String name;
 	private int range;
-	private int facing;
+	private int facing; // not a 1-16 number, this is a number between -8 and 8 and this indicates how far off of "forward"
+						// the weapon is. negative means left, positive means right
 	
     public Weapon(int damage, String type, String name, int range, int facing) {
     	this.damage = damage;
@@ -29,11 +31,26 @@ public final class Weapon {
     	}
     	
     }
+    
+
+    
+    public void addShip(Ship ship){
+    	this.ship(ship);
+    }
 
     public int typeNum(){
     	return this.typeNum;
     }
-    public int facing(){
+    public int realFacing(){
+    	int realFacing = this.ship().facing() + this.facing();
+    	if(realFacing > 16){
+    		realFacing -= 16;
+    	} else if (realFacing < 16){
+    		realFacing += 16;
+    	}
+    	return realFacing;
+    }
+    private int facing(){
     	return this.facing;
     }
     public void facing(int facing){
@@ -73,5 +90,13 @@ public final class Weapon {
     
     public static void main(String[] args) {
     }
+
+	public Ship ship() {
+		return ship;
+	}
+
+	public void ship(Ship ship) {
+		this.ship = ship;
+	}
 
 }

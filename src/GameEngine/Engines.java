@@ -29,26 +29,31 @@ public final class Engines {
     private static EnviroEffect boost(EnviroEffect result, Ship ship, String argument){
     	boolean left = false;
     	int frontToRemove = 0;
+    	boolean validParam = false;
     	if (argument.contains("left")){
     		left = true;
     		frontToRemove = 4;
+    		validParam = true;
     	} if (argument.contains("right")){
     		left = false;
     		frontToRemove = 5;
+    		validParam = true;
     	}
-    	String removeFront = argument.substring(frontToRemove);
-    	int dash = removeFront.indexOf("-");
-    	removeFront = removeFront.substring(0, dash);
-    	int number = Integer.parseInt(removeFront);
-    	if (argument.contains("Deg")){
+    	if (validParam) { 
+    		String removeFront = argument.substring(frontToRemove);
+    		int dash = removeFront.indexOf("-");
+    		removeFront = removeFront.substring(0, dash);
+    		int number = Integer.parseInt(removeFront);
+    		if (argument.contains("Deg")){
     		
-    	} else if (argument.contains("%")){
+    		} else if (argument.contains("%")){
     		
-    	}else{
-    		if(left){
-    			ship.addFacing(number * -1);
     		}else{
-    			ship.addFacing(number);
+    			if(left){
+    				ship.addFacing(number * -1);
+    			}else{
+    				ship.addFacing(number);
+    			}
     		}
     	}
     	return result;
@@ -67,20 +72,30 @@ public final class Engines {
     private static EnviroEffect engage(EnviroEffect result, Ship ship, String argument){
     	int moveForward = 0;
     	int moveSide = 0;
+    	double throttle = 1;
+    	
+    	if (argument.contains("half-power")){
+    		throttle = .5;
+    	} else if (argument.contains("third-power")){
+    		throttle = .33;
+    	} else if (argument.contains("quarter-power")){
+    		throttle = .25;
+    	}
+
     	
     	if (argument.contains("thrusters")){
-    		moveForward = ship.enginePower();
+    		moveForward = (int) ((ship.enginePower()) * throttle);
     	}
      	if (argument.contains("sidekicks") && argument.contains("left")){
-    		moveForward = ship.enginePower() / 2;
-    		moveSide = ship.enginePower() / 2;
+    		moveForward = (int) ((ship.enginePower() / 2) * throttle);
+    		moveSide = (int) ((ship.enginePower() / 2) * throttle);
     	}   	
      	if (argument.contains("sidekicks") && argument.contains("right")){
-    		moveForward = ship.enginePower() / 2;
-    		moveSide = ship.enginePower() / 2;
+    		moveForward = (int) ((ship.enginePower() / 2) * throttle);
+    		moveSide = (int) ((ship.enginePower() / 2) * throttle);
     	}
     	if (argument.contains("halters")){
-    		moveForward = (ship.enginePower() / 2) * -1;
+    		moveForward = (int) (((ship.enginePower() / 2) * -1) * throttle);
     	}
     	
     	//int[] coord = Utils.giveMovement(moveForward, moveSide, ship.facing());

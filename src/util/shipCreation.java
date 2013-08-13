@@ -106,7 +106,13 @@ public class shipCreation {
     			input,														// input
     			(String) shipJSON.get("shipName"),							// name
     			weapons														// list of weapons
-    	);
+    	);
+		
+		// "add the ship to the weapons"
+		int size = ship.weapons().size();
+		for (int i = 0; i < size; i++){
+			ship.weapons().get(i).addShip(ship);
+		}
 		// return the ship
 		return ship;
 	}
