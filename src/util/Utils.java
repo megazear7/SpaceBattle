@@ -115,6 +115,9 @@ public final class Utils {
      * @return
      */
     public static Ship findNearest(Ship ship, List<Ship> ships){
+    	if (ships.size() == 0){
+    		return null;
+    	}
     	Ship nearest = ships.get(0);
     	int listSize = ships.size();
     	int shortestDistance = findDistance(ship, ships.get(0));
@@ -129,6 +132,40 @@ public final class Utils {
     	return nearest;
     }
 
+    /**
+     * Finds the nearest Ship to ship of the list of Ship's ships, that is not in allies
+     * @param ship
+     * @param ships
+     * @return
+     */
+    public static Ship findNearest(Ship ship, List<Ship> ships, List<Ship> allies){
+    	Ship nearest = ships.get(0);
+    	int listSize = ships.size();
+    	int shortestDistance = findDistance(ship, ships.get(0));
+    	for (int i = 1; i < listSize; i++){
+    		int newDistance = findDistance(ship, ships.get(i));
+    		if((newDistance < shortestDistance && notInList(ships.get(i), allies)) && (ship != ships.get(i))){
+    			shortestDistance = newDistance;
+    			nearest = ships.get(i);
+    		}
+    	}
+    	
+    	return nearest;
+    }
+    
+    public static boolean notInList(Ship ship, List<Ship> ships){
+    	if (ships == null || ships.size() == 0){
+    		return true;
+    	}
+    	int listSize = ships.size();
+    	boolean notIn = true;
+    	for (int i = 1; i < listSize; i++){
+    		if(ships.get(i) == ship){
+    			notIn = false;
+    		}
+    	}
+    	return notIn;
+    }
     /**
      * This finds the ship that is within the ships view, within range, and returns only the closest.
      * @param ship
@@ -408,20 +445,20 @@ public final class Utils {
 
     	List<Ship> ships = new ArrayList<Ship>();
     	ships.add(shipTwo);
-    	ships = Utils.removeNotInArc(shipOne, shipOne.facing(), ships);
-    	if (ships.size() == 1){
+    	List<Ship> shipsInArc = Utils.removeNotInArc(shipOne, shipOne.facing(), ships);
+    	if (shipsInArc.size() == 1){
     		return "front";
     	} 
-    	ships = Utils.removeNotInArc(shipOne, shipOne.leftFace(), ships);
-     	if (ships.size() == 1){
+    	shipsInArc = Utils.removeNotInArc(shipOne, shipOne.leftFace(), ships);
+     	if (shipsInArc.size() == 1){
     		return "left";
     	}   
-    	ships = Utils.removeNotInArc(shipOne, shipOne.rightFace(), ships);
-    	if (ships.size() == 1){
+    	shipsInArc = Utils.removeNotInArc(shipOne, shipOne.rightFace(), ships);
+    	if (shipsInArc.size() == 1){
     		return "right";
     	}
-    	ships = Utils.removeNotInArc(shipOne, shipOne.rearFace(), ships);
-    	if (ships.size() == 1){
+    	shipsInArc = Utils.removeNotInArc(shipOne, shipOne.rearFace(), ships);
+    	if (shipsInArc.size() == 1){
     		return "rear";
     	}
     	return "none"; // should never happen

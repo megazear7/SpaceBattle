@@ -8,6 +8,7 @@ public final class Ship {
 	private Ship target;
 	private BattleController battleController;
 	private int health;
+	private int maxHealth;
 	private int weaponPower;
 	private List<Weapon> weapons;
 	private int power;
@@ -23,6 +24,7 @@ public final class Ship {
     		int frontShield, int leftShield, int rightShield, int rearShield, int posX, int posY, int facing, Input input, String name, List<Weapon> weapons) {
     	this.battleController(battleController);
     	this.health = health;
+    	this.maxHealth(health);
     	this.power = power;
     	this.weaponPower = weaponPower;
     	this.input = input;
@@ -279,6 +281,14 @@ public final class Ship {
 
 	public void shield(Shield shield) {
 		this.shield = shield;
+	}
+
+	public int maxHealth() {
+		return maxHealth;
+	}
+
+	public void maxHealth(int maxHealth) {
+		this.maxHealth = maxHealth;
 	}
 
 }

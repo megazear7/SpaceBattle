@@ -1,5 +1,6 @@
 package util;
 import gameEngine.Command;
+import gameEngine.Ship;
 import components.simplereader.SimpleReader;
 import components.simplereader.SimpleReader1L;
 
@@ -33,6 +34,12 @@ public final class ConsoleInput implements Input {
 
 	@Override
 	public void giveCommand(String command) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addShip(Ship ship) {
 		// TODO Auto-generated method stub
 		
 	}
