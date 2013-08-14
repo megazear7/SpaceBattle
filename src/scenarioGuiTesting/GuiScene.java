@@ -7,6 +7,8 @@ import gameEngine.Weapon;
 import java.util.List;
 import java.util.ArrayList;
 
+import util.ComputerAI;
+import util.Input;
 import util.shipCreation;
 
 /**
@@ -35,15 +37,15 @@ public final class GuiScene {
         enterpriseWeapons.add(rightMissles);
 
         GuiInput enterpriseInput = new GuiInput(control);
-        GuiInput deathstarInput = new GuiInput(control);
+        Input deathstarAI = new ComputerAI();
         
         Ship enterprise = shipCreation.createShip("enterprise", control, enterpriseInput, 0, -4, 16);
-        Ship deathstar = shipCreation.createShip("deathstar", control, deathstarInput, 0, 4, 8);
+        Ship deathstar = shipCreation.createShip("deathstar", control, deathstarAI, 0, 4, 8);
+
+        deathstarAI.addShip(deathstar);
         
         enterpriseInput.addGui(new GuiTest(enterpriseInput));
-        deathstarInput.addGui(new GuiTest(deathstarInput));
         enterpriseInput.addShip(enterprise);
-        deathstarInput.addShip(deathstar);
 
         temp.add(enterprise);
         temp.add(deathstar);
